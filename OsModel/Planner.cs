@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Ookii.Collections.Generic;
 using OsModel.Processes;
+using OsModel.Comparers;
 
 namespace OsModel
 {
@@ -13,18 +14,10 @@ namespace OsModel
 
         static Planner()
         {
-            processQueue = new PriorityQueue<Process>(new ProcessComparer());
+            processQueue = new PriorityQueue<Process>(new ProcessComparer()); //testing purposes only
             processQueue.Enqueue(new Process(5));
             processQueue.Enqueue(new Process(2));
             processQueue.Enqueue(new Process(3));
-        }
-
-        private class ProcessComparer : IComparer<Process>
-        {
-            public int Compare(Process x, Process y)
-            {
-                return x.Priority - y.Priority;
-            }
         }
     }
 }
