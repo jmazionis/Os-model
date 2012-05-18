@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ookii.Collections.Generic">
-      <HintPath>..\..\..\..\..\Desktop\Ookii.Collections.Generic\Ookii.Collections.Generic.dll</HintPath>
+      <HintPath>.\Ookii.Collections.Generic.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
