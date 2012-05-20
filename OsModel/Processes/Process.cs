@@ -10,10 +10,12 @@ using OsModel.Resources;
 namespace OsModel.Processes
 {
     public enum State { Blocked, Ready, Active }
+    public enum Mode { User, Supervisor }
 
     public class Process
     {
         public static int Id = 0;
+        
         public int Priority { get; set; }
         public State State { get; set; }
         //public List<int> SavedRegisters { get; set; }
