@@ -13,14 +13,27 @@ namespace OsModel.Processes
 
     public abstract class Process
     {
-        public static int Id = 0;
+<<<<<<< HEAD
+        private List<Process> childProcessList, currentProcessList;
+        private List<Resources.Resource> createdResources, ownedResources;
 
         public State State { get; set; }
         public int Priority { get; set; }
+        public string Name {  get; private set; }
+        public Process Parent { get; private set; }
+        public int Id { get; set; }
+
+        
+=======
+        public static int Id = 0;
+        
+        public int Priority { get; set; }
+        public State State { get; set; }
         //public List<int> SavedRegisters { get; set; }
         public List<Resource> CreatedResources { get; set; }
         public List<Process> CreatedProcesses { get; set; }
         public Process ParentProcess { get; set; }
+>>>>>>> 3c04b37bc3a89ecde7a91bf9495c04a34dd7907b
 
         public Process(int priority, State state, Process parentProcess)
         {
