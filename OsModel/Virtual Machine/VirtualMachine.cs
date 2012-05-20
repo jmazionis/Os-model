@@ -4,12 +4,13 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 
+
 namespace OsModel.VirtualMachineEmulator
 {
     public class VirtualMachine
     {
         public event VMEventHandler VMTaskFinished;
-        private Cpu cpu;
+        private VirtualCpu cpu;
         private IO io;
         private Memory memory;
         private TaskLoader task;
@@ -20,7 +21,7 @@ namespace OsModel.VirtualMachineEmulator
             memory = new Memory(Memory.VIRTUAL_MEMORY_BLOCK_COUNT, Memory.BLOCK_WORD_COUNT);
             this.task = new TaskLoader(fileName, memory);
             task.Load();
-            cpu = new Cpu(memory, this);
+            cpu = new VirtualCpu(memory, this);
             io = new IO();
             BlockOffset += Memory.VIRTUAL_MEMORY_BLOCK_COUNT;
             this.MapBlocks();
@@ -81,7 +82,7 @@ namespace OsModel.VirtualMachineEmulator
             get { return io; }
         }
 
-        public Cpu Cpu
+        public VirtualCpu Cpu
         {
             get { return cpu; }
         }

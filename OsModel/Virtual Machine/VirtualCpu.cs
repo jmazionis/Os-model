@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OsModel.VirtualMachineEmulator
 {
-    public class Cpu
+    public class VirtualCpu
     {
         public event VMEventHandler CommandExecuted;
         private Memory memory;
@@ -15,7 +15,7 @@ namespace OsModel.VirtualMachineEmulator
         public Word CX { get; set; }
         public byte SF { get; set; }
 
-        public Cpu(Memory memory, VirtualMachine vm)
+        public VirtualCpu(Memory memory, VirtualMachine vm)
         {
             this.vm = vm;
             this.memory = memory;
