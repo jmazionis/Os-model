@@ -7,15 +7,19 @@ using Ookii;
 namespace OsModel.Processes
 {
     public enum State { Blocked, Ready, Active }
-    public enum Mode { User, Supervisor }
 
-    public class Process
+    public abstract class Process
     {
-        private List<Resources.Resource> resources = new List<Resources.Resource>();
-        
+        private List<Process> childProcessList, currentProcessList;
+        private List<Resources.Resource> createdResources, ownedResources;
+
+        public State State { get; set; }
         public int Priority { get; set; }
         public string Name {  get; private set; }
         public Process Parent { get; private set; }
+        public int Id { get; set; }
+
+        
 
         public Process(int priority, string name, Process parent)
         {
@@ -23,5 +27,6 @@ namespace OsModel.Processes
             this.Name = name;
             this.Parent = parent;
         }
+
     }
 }
