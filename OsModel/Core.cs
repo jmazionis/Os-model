@@ -11,15 +11,41 @@ namespace OsModel
 {
     public static class Core
     {
-        public static PriorityQueue<Process> ProcessList;
-        public static PriorityQueue<Process> ReadyProcessList;
+        public static List<Process> ProcessList;
+        public static PriorityQueue<Process> ReadyProcessQueue;
         public static List<Resource> ResourcesList;
 
         static Core()
         {
-            ProcessList = new PriorityQueue<Process>(new ProcessComparer());
-            ReadyProcessList = new PriorityQueue<Process>(new ProcessComparer());
+            ProcessList = new List<Process>();
+            ReadyProcessQueue = new PriorityQueue<Process>(new ProcessComparer());
             ResourcesList = new List<Resource>();
+        }
+
+        void StartOperatingSystem()
+        {
+
+        }
+
+        void DeleteResource(Resource resource)
+        {
+            resource.Creator.CreatedResources.Remove(resource);
+            foreach (var process in resource.WaitingProcesses)
+            {
+                process.State = Processes.State.Ready;
+            }
+            ResourcesList.Remove(resource);
+        }
+
+        void CreateProcess(Process process)
+        {
+            ProcessList.Add(process);
+        }
+
+        void DeleteProcess(Process process)
+        {
+            process.Delete();
+            //TODO: delete from ReadyProcessQueue
         }
     }
 }

@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="Planner.cs" />
     <Compile Include="Processes\Process.cs" />
+    <Compile Include="Processes\StartStop.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Resource.cs" />

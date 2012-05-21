@@ -25,5 +25,10 @@ namespace OsModel.Resources
             State = state;
             Id = id;
         }
+
+        public void Free()
+        {
+            State = Resources.State.Free;
+        }
     }
 }

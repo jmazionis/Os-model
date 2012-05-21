@@ -13,16 +13,26 @@ namespace OsModel.Processes
 
     public abstract class Process
     {
+<<<<<<< HEAD
         public int Id { get; set; }   
+        public int Priority { get; set; }
+=======
+        public static int Id = 0;
 
+>>>>>>> 98ae3cf5ace08710bfa5da3bd5602e563289d970
         public State State { get; set; }
         public int Priority { get; set; }
         public Registers Registers { get; set; }
         public List<Resource> CreatedResources { get; set; }
         public List<Process> CreatedProcesses { get; set; }
+        public List<Process> CurrentProcessList { get; set; }
         public Process ParentProcess { get; set; }
 
+<<<<<<< HEAD
         public Process(int priority, State state, Process parentProcess, int id)
+=======
+        public Process(int priority, State state, Process parentProcess, List<Process> currentProcessList)
+>>>>>>> 98ae3cf5ace08710bfa5da3bd5602e563289d970
         {
             Id = id;
             Priority = priority;
@@ -30,22 +40,7 @@ namespace OsModel.Processes
             ParentProcess = parentProcess;
             CreatedProcesses = new List<Process>();
             CreatedResources = new List<Resource>();
-        }
-
-        public void Execute()
-        {
-            //TODO: complete implementation
-        }
-
-        public void CreateResource(Resource resource)
-        {
-            CreatedResources.Add(resource);
-            Core.ResourcesList.Add(resource);
-        }
-
-        public void RequestResource(Resource resource)
-        {
-            State = Processes.State.Blocked;
+            CurrentProcessList = currentProcessList;
         }
 
         public void Delete()
