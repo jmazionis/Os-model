@@ -14,8 +14,7 @@ namespace OsModel.Processes
 
     public class Process
     {
-        public static int Id = 0;
-        
+        public int Id { get; set; }   
         public int Priority { get; set; }
         public State State { get; set; }
         //public List<int> SavedRegisters { get; set; }
@@ -23,9 +22,9 @@ namespace OsModel.Processes
         public List<Process> CreatedProcesses { get; set; }
         public Process ParentProcess { get; set; }
 
-        public Process(int priority, State state, Process parentProcess)
+        public Process(int priority, State state, Process parentProcess, int id)
         {
-            Id++;
+            Id = id;
             Priority = priority;
             State = state;
             ParentProcess = parentProcess;
