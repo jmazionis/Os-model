@@ -17,12 +17,13 @@ namespace OsModel.Processes
 
         public State State { get; set; }
         public int Priority { get; set; }
-        //public List<int> SavedRegisters { get; set; }
+        public Registers Registers { get; set; }
         public List<Resource> CreatedResources { get; set; }
         public List<Process> CreatedProcesses { get; set; }
+        public List<Process> CurrentProcessList { get; set; }
         public Process ParentProcess { get; set; }
 
-        public Process(int priority, State state, Process parentProcess)
+        public Process(int priority, State state, Process parentProcess, List<Process> currentProcessList)
         {
             Id++;
             Priority = priority;
@@ -30,6 +31,15 @@ namespace OsModel.Processes
             ParentProcess = parentProcess;
             CreatedProcesses = new List<Process>();
             CreatedResources = new List<Resource>();
+            CurrentProcessList = currentProcessList;
+        }
+
+        public void Delete()
+        {
+            CreatedResources.Clear();
+            foreach (Process proc in CreatedProcesses)
+                proc.Delete();
+            CreatedProcesses.Clear();
         }
 
     }

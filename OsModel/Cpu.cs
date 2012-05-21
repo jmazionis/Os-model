@@ -8,6 +8,12 @@ namespace OsModel
 {
     public class Cpu
     {
+        public Registers Registers { get; set; }
+
+    }
+
+    public struct Registers
+    {
         public short PC { get; set; }
         public Word AX { get; set; }
         public Word CX { get; set; }
@@ -15,7 +21,6 @@ namespace OsModel
         public byte SF { get; set; }
         public WorkMode MODE { get; set; }
         public Int64 TIME { get; set; }
-
     }
 
     enum WorkMode 
