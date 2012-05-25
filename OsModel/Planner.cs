@@ -10,14 +10,39 @@ namespace OsModel
 {
     public static class Planner
     {
-        public static PriorityQueue<Process> processQueue;
+        public static Process CurrentProcess;
+        public static int GlobalTimer;
 
         static Planner()
         {
-            processQueue = new PriorityQueue<Process>(new ProcessComparer()); //testing purposes only
-            processQueue.Enqueue(new Process(5));
-            processQueue.Enqueue(new Process(2));
-            processQueue.Enqueue(new Process(3));
+        }
+
+        private static void PickWaitingProcess()
+        {
+           CurrentProcess = Core.ReadyProcessQueue.Dequeue();
+        }
+
+        private static void DistributeResources()
+        {
+            foreach (var resource in Core.ResourcesList)
+            {
+                if (resource.State == Resources.State.Free)
+                {
+                    var process = resource.WaitingProcesses.Dequeue();
+                    process.State = State.Ready;
+                    resource.State = Resources.State.Occupied;
+                }
+            }
+        }
+
+        public static void Start()
+        {
+            while(true)
+            {
+                PickWaitingProcess();
+                CurrentProcess.Execute();
+                DistributeResources();
+            }
         }
     }
 }

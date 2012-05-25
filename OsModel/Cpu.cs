@@ -9,8 +9,6 @@ namespace OsModel
     public class Cpu
     {
         public Registers Registers { get; set; }
-        public WorkMode Mode { get; set; }
-
     }
 
     public struct Registers
@@ -24,7 +22,7 @@ namespace OsModel
         public Int64 TIME { get; set; }
     }
 
-    enum WorkMode 
+    public enum WorkMode 
     {
         SUPERVISOR, USER
     }

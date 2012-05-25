@@ -13,16 +13,16 @@ namespace OsModel.Processes
 
     public abstract class Process
     {
-        public int Id { get; set; }   
-
+        public string Id { get; set; }   
         public State State { get; set; }
         public int Priority { get; set; }
         public Registers Registers { get; set; }
         public List<Resource> CreatedResources { get; set; }
         public List<Process> CreatedProcesses { get; set; }
         public Process ParentProcess { get; set; }
+        public int Checkpoint { get; set; }
 
-        public Process(int priority, State state, Process parentProcess, int id)
+        public Process(int priority, State state, Process parentProcess, string id)
         {
             Id = id;
             Priority = priority;
@@ -30,12 +30,10 @@ namespace OsModel.Processes
             ParentProcess = parentProcess;
             CreatedProcesses = new List<Process>();
             CreatedResources = new List<Resource>();
+            Checkpoint = 1;
         }
 
-        public void Execute()
-        {
-            //TODO: complete implementation
-        }
+        public abstract void Execute();
 
         public void CreateResource(Resource resource)
         {
@@ -43,9 +41,20 @@ namespace OsModel.Processes
             Core.ResourcesList.Add(resource);
         }
 
-        public void RequestResource(Resource resource)
+        public bool RequestResource(string resourceName)
         {
-            State = Processes.State.Blocked;
+            var resource = Core.ResourcesList.SingleOrDefault(r => r.Id == "Memory");
+            if (resource.State == Resources.State.Free)
+            {
+                resource.State = Resources.State.Occupied;
+                return true;
+            }
+            else
+            {
+                resource.WaitingProcesses.Enqueue(this);
+                State = Processes.State.Blocked;
+                return false;
+            }
         }
 
         public void Delete()

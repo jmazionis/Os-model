@@ -13,12 +13,12 @@ namespace OsModel.Resources
 
     public abstract class Resource
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public Process Creator { get; set; }
         public PriorityQueue<Process> WaitingProcesses { get; set; }
         public State State { get; set; }
 
-        public Resource(Process creator, State state, int id)
+        public Resource(Process creator, State state, string id)
         {
             WaitingProcesses = new PriorityQueue<Process>(new ProcessComparer());
             Creator = creator;

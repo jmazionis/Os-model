@@ -22,12 +22,13 @@ namespace OsModel
             ResourcesList = new List<Resource>();
         }
 
-        void StartOperatingSystem()
+        public static void StartOperatingSystem()
         {
-
+            CreateProcess(new StartStop(1, Processes.State.Active, null, "StartStop"));
+            Planner.Start();
         }
 
-        void DeleteResource(Resource resource)
+        public static void DeleteResource(Resource resource)
         {
             resource.Creator.CreatedResources.Remove(resource);
             foreach (var process in resource.WaitingProcesses)
@@ -37,12 +38,16 @@ namespace OsModel
             ResourcesList.Remove(resource);
         }
 
-        void CreateProcess(Process process)
+        public static void CreateProcess(Process process)
         {
             ProcessList.Add(process);
+            if (process.State == Processes.State.Ready || process.State == Processes.State.Active)
+            {
+                ReadyProcessQueue.Enqueue(process);
+            }
         }
 
-        void DeleteProcess(Process process)
+        public static void DeleteProcess(Process process)
         {
             process.Delete();
             //TODO: delete from ReadyProcessQueue
