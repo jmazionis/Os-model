@@ -41,10 +41,10 @@ namespace OsModel.Processes
             Core.ResourcesList.Add(resource);
         }
 
-        public bool RequestResource(string resourceName)
+        public virtual bool RequestResource(string resourceName)
         {
-            var resource = Core.ResourcesList.SingleOrDefault(r => r.Id == "Memory");
-            if (resource.State == Resources.State.Free)
+            var resource = Core.ResourcesList.SingleOrDefault(r => r.Id == resourceName);
+            if (resource != null && resource.State == Resources.State.Free)
             {
                 resource.State = Resources.State.Occupied;
                 return true;
@@ -64,6 +64,5 @@ namespace OsModel.Processes
                 proc.Delete();
             CreatedProcesses.Clear();
         }
-
     }
 }

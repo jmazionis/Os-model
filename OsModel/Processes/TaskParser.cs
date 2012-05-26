@@ -2,20 +2,48 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OsModel.Resources;
 
 namespace OsModel.Processes
 {
     public class TaskParser : Process
     {
+        TaskInSupervisorMemory taskSource;
+
         public TaskParser(int priority, State state, Process parentProcess, string id)
             : base(priority, state, parentProcess, id)
         {
+        }
 
+        private bool Parse() //TODO: implement properly
+        {                    //how to check: if taskSource[0] does not belong to virtual machine command set, return false
+                                                        
+            return true; //if no errors were found while parsing taskSource array, consisting of source code of a task, method must return true
         }
 
         public override void Execute()
         {
-
+            switch (Checkpoint)
+            {
+                case 1:
+                    if (!RequestResource("TaskInSupervisorMemory"))
+                    {
+                        break;
+                    }
+                    Checkpoint++;
+                    goto case 2;
+                case 2:
+                    taskSource = (TaskInSupervisorMemory) Core.ResourcesList.SingleOrDefault(r => r.Id == "TaskInSupervisorMemory");
+                    if (!Parse())
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        CreateResource(new Task(this, Resources.State.Free, "Task", taskSource));
+                        break;
+                    }
+            }
         }
     }
 }

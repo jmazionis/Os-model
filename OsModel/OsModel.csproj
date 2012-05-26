@@ -71,8 +71,13 @@
     <Compile Include="Processes\WriteOut.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\EndOfOs.cs" />
     <Compile Include="Resources\Memory.cs" />
     <Compile Include="Resources\Resource.cs" />
+    <Compile Include="Resources\SupervisorMemory.cs" />
+    <Compile Include="Resources\Task.cs" />
+    <Compile Include="Resources\TaskInput.cs" />
+    <Compile Include="Resources\TaskInSupervisorMemory.cs" />
     <Compile Include="Virtual Machine\VirtualCpu.cs" />
     <Compile Include="Virtual Machine\IO.cs" />
     <Compile Include="Virtual Machine\Memory.cs" />
@@ -99,8 +104,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Tasks\" />
+    <Content Include="Tasks\Fibonacci.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
