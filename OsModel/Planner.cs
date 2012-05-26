@@ -26,22 +26,29 @@ namespace OsModel
         {
             foreach (var resource in Core.ResourcesList)
             {
-                if (resource.State == Resources.State.Free)
+                try
                 {
-                    var process = resource.WaitingProcesses.Dequeue();
-                    process.State = State.Ready;
-                    resource.State = Resources.State.Occupied;
+                    if (resource.State == Resources.State.Free)
+                    {
+                        var process = resource.WaitingProcesses.Dequeue();
+                        process.State = State.Ready;
+                        resource.State = Resources.State.Occupied;
+                    }
                 }
+                catch (Exception)
+                {
+                    
+                }         
             }
         }
 
         public static void Start()
         {
-            while(true)
+            while(!Core.FinishedWork)
             {
                 PickWaitingProcess();
-                CurrentProcess.Execute();
                 DistributeResources();
+                CurrentProcess.Execute();   
             }
         }
     }

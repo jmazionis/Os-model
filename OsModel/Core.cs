@@ -14,6 +14,7 @@ namespace OsModel
         public static List<Process> ProcessList;
         public static PriorityQueue<Process> ReadyProcessQueue;
         public static List<Resource> ResourcesList;
+        public static bool FinishedWork = false;
 
         static Core()
         {
