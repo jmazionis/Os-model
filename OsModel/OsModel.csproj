@@ -96,7 +96,7 @@
     <Compile Include="Virtual Machine\VirtualCpu.cs" />
     <Compile Include="Virtual Machine\IO.cs" />
     <Compile Include="Virtual Machine\Memory.cs" />
-    <Compile Include="Virtual Machine\RealMachine.cs" />
+    <Compile Include="RealMachine.cs" />
     <Compile Include="Virtual Machine\TaskLoader.cs" />
     <Compile Include="Virtual Machine\VirtualMachine.cs" />
     <Compile Include="Virtual Machine\Word.cs" />
