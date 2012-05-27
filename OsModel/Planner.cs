@@ -55,5 +55,13 @@ namespace OsModel
                 ProcessExecuted();
             }
         }
+
+        public static void ExecuteNext()
+        {
+                PickWaitingProcess();
+                DistributeResources();
+                CurrentProcess.Execute();
+                ProcessExecuted();
+        }
     }
 }

@@ -53,5 +53,16 @@ namespace OsModel
             process.Delete();
             //TODO: delete from ReadyProcessQueue
         }
+
+        public static void StartOS()
+        {
+            CreateProcess(new StartStop(1, Processes.State.Active, null, "StartStop"));
+        }
+
+        public static void ExecuteNext()
+        {
+            if (!FinishedWork)
+                Planner.ExecuteNext();
+        }
     }
 }

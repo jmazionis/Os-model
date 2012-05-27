@@ -32,14 +32,13 @@ namespace OsModel
                 {
                     process.Id,
                     process.State,
-                    process.ParentProcess != null ? process.ParentProcess.GetType().Name + " {" + process.ParentProcess.Id + "}" : "none",
+                    process.ParentProcess != null ? process.ParentProcess.Id : "none",
                     process.Priority,
                     process.Checkpoint
                 };
-                row.SetValues(values);
                 processGridView.Rows.Add(row);
+                processGridView.Rows[processGridView.Rows.Count - 1].SetValues(values);
             }
-            processGridView.Sort(processGridView.Columns[1], ListSortDirection.Ascending);
         }
 
         void UpdateResources()
@@ -51,17 +50,23 @@ namespace OsModel
                 object[] values = new object[3]
                 {
                     resource.Id,
-                    resource.Creator.GetType().Name + " {" + resource.Creator.Id + "}",
+                    resource.Creator.Id,
                     resource.State
                 };
-                row.SetValues(values);
                 resourcesGridView.Rows.Add(row);
+                resourcesGridView.Rows[resourcesGridView.Rows.Count - 1].SetValues(values);
             }
         }
 
         private void StartOSClick(object sender, EventArgs e)
         {
-            Core.StartOperatingSystem();
+            Core.StartOS();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < Int32.Parse(executeCountBox.Text); i++)
+                Core.ExecuteNext();
         }
 
     }
