@@ -10,7 +10,7 @@ using OsModel;
 using OsModel.Processes;
 using OsModel.Resources;
 
-namespace OsModel
+namespace OsModel.GUI
 {
 
     public partial class MainForm : Form
@@ -20,6 +20,7 @@ namespace OsModel
             InitializeComponent();
             Planner.ProcessExecuted += new OSEventHandler(UpdateProcesses);
             Planner.ProcessExecuted += new OSEventHandler(UpdateResources);
+            AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"C:\Users\Tomas\Os-model\OsModel\Tasks\Fibonacci.txt"));
         }
 
         void UpdateProcesses()
@@ -56,6 +57,48 @@ namespace OsModel
                 resourcesGridView.Rows.Add(row);
                 resourcesGridView.Rows[resourcesGridView.Rows.Count - 1].SetValues(values);
             }
+        }
+
+        private void FillRealMemoryGrid()
+        {
+            realMemoryGridView.Rows.Clear();
+            realMemoryGridView.Columns.Clear();
+            for (int i = 0; i < RealMachine.Memory.WordCount; i++)
+            {
+                realMemoryGridView.Columns.Add(i.ToString("X"), i.ToString("X"));
+                realMemoryGridView.Columns[i].DisplayIndex = i;
+            }
+            for (int i = 0; i < RealMachine.Memory.BlockCount; i++)
+            {
+                string[] rowValues = new string[RealMachine.Memory.WordCount];
+                for (int j = 0; j < RealMachine.Memory.WordCount; j++)
+                {
+                    if (!(RealMachine.Memory[i, j].ToString() == "----"))
+                        rowValues[j] = RealMachine.Memory[i, j].ToString();
+                }
+                realMemoryGridView.Rows.Add(rowValues);
+                realMemoryGridView.Rows[i].HeaderCell.Value = i.ToString("X");
+            }
+        }
+
+        private void UpdateRealMemoryGrid()
+        {
+            for (int i = 0; i < RealMachine.Memory.BlockCount; i++)
+            {
+                string[] rowValues = new string[RealMachine.Memory.WordCount];
+                for (int j = 0; j < RealMachine.Memory.WordCount; j++)
+                {
+                    if (!(RealMachine.Memory[i, j].ToString() == "----"))
+                        rowValues[j] = RealMachine.Memory[i, j].ToString();
+                }
+                realMemoryGridView.Rows[i].SetValues(rowValues);
+                realMemoryGridView.Rows[i].HeaderCell.Value = i.ToString("X");
+            }
+        }
+
+        private void AddVirtualMachine(VirtualMachineEmulator.VirtualMachine vm)
+        {
+            virtualMachineTabControl.Controls.Add(new VirtualMachineTab(vm, virtualMachineTabControl.Controls.Count));
         }
 
         private void StartOSClick(object sender, EventArgs e)

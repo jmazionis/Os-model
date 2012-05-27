@@ -1,4 +1,4 @@
-﻿namespace OsModel
+﻿namespace OsModel.GUI
 {
     partial class MainForm
     {
@@ -46,7 +46,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.axLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.realMemory = new System.Windows.Forms.DataGridView();
+            this.realMemoryGridView = new System.Windows.Forms.DataGridView();
             this.virtualMachinesTab = new System.Windows.Forms.TabPage();
             this.virtualMachineTabControl = new System.Windows.Forms.TabControl();
             this.processTab = new System.Windows.Forms.TabPage();
@@ -67,15 +67,16 @@
             this.button2 = new System.Windows.Forms.Button();
             this.executeCountBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.coreBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.coreBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.resIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resParentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resStateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button4 = new System.Windows.Forms.Button();
+            this.coreBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.coreBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl.SuspendLayout();
             this.realMachineTab.SuspendLayout();
             this.registersGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.realMemory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.realMemoryGridView)).BeginInit();
             this.virtualMachinesTab.SuspendLayout();
             this.processTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.processGridView)).BeginInit();
@@ -102,17 +103,17 @@
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.ShowToolTips = true;
-            this.tabControl.Size = new System.Drawing.Size(819, 506);
+            this.tabControl.Size = new System.Drawing.Size(670, 506);
             this.tabControl.TabIndex = 0;
             // 
             // realMachineTab
             // 
             this.realMachineTab.BackColor = System.Drawing.SystemColors.Control;
             this.realMachineTab.Controls.Add(this.registersGroupBox);
-            this.realMachineTab.Controls.Add(this.realMemory);
+            this.realMachineTab.Controls.Add(this.realMemoryGridView);
             this.realMachineTab.Location = new System.Drawing.Point(4, 22);
             this.realMachineTab.Name = "realMachineTab";
-            this.realMachineTab.Size = new System.Drawing.Size(811, 480);
+            this.realMachineTab.Size = new System.Drawing.Size(662, 480);
             this.realMachineTab.TabIndex = 0;
             this.realMachineTab.Text = "Real Machine";
             // 
@@ -137,7 +138,7 @@
             this.registersGroupBox.Controls.Add(this.label1);
             this.registersGroupBox.Location = new System.Drawing.Point(6, 422);
             this.registersGroupBox.Name = "registersGroupBox";
-            this.registersGroupBox.Size = new System.Drawing.Size(801, 57);
+            this.registersGroupBox.Size = new System.Drawing.Size(653, 57);
             this.registersGroupBox.TabIndex = 1;
             this.registersGroupBox.TabStop = false;
             this.registersGroupBox.Text = "Registers";
@@ -291,15 +292,15 @@
             // 
             // realMemory
             // 
-            this.realMemory.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.realMemoryGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.realMemory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.realMemory.Enabled = false;
-            this.realMemory.Location = new System.Drawing.Point(3, 3);
-            this.realMemory.Name = "realMemory";
-            this.realMemory.Size = new System.Drawing.Size(805, 413);
-            this.realMemory.TabIndex = 0;
+            this.realMemoryGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.realMemoryGridView.Enabled = false;
+            this.realMemoryGridView.Location = new System.Drawing.Point(3, 3);
+            this.realMemoryGridView.Name = "realMemory";
+            this.realMemoryGridView.Size = new System.Drawing.Size(656, 413);
+            this.realMemoryGridView.TabIndex = 0;
             // 
             // virtualMachinesTab
             // 
@@ -307,7 +308,7 @@
             this.virtualMachinesTab.Controls.Add(this.virtualMachineTabControl);
             this.virtualMachinesTab.Location = new System.Drawing.Point(4, 22);
             this.virtualMachinesTab.Name = "virtualMachinesTab";
-            this.virtualMachinesTab.Size = new System.Drawing.Size(811, 480);
+            this.virtualMachinesTab.Size = new System.Drawing.Size(662, 480);
             this.virtualMachinesTab.TabIndex = 1;
             this.virtualMachinesTab.Text = "Virtual Machines";
             // 
@@ -319,7 +320,7 @@
             this.virtualMachineTabControl.Location = new System.Drawing.Point(3, 3);
             this.virtualMachineTabControl.Name = "virtualMachineTabControl";
             this.virtualMachineTabControl.SelectedIndex = 0;
-            this.virtualMachineTabControl.Size = new System.Drawing.Size(805, 474);
+            this.virtualMachineTabControl.Size = new System.Drawing.Size(656, 474);
             this.virtualMachineTabControl.TabIndex = 0;
             // 
             // processTab
@@ -328,7 +329,7 @@
             this.processTab.Controls.Add(this.processGridView);
             this.processTab.Location = new System.Drawing.Point(4, 22);
             this.processTab.Name = "processTab";
-            this.processTab.Size = new System.Drawing.Size(811, 480);
+            this.processTab.Size = new System.Drawing.Size(662, 480);
             this.processTab.TabIndex = 2;
             this.processTab.Text = "Processes";
             // 
@@ -348,10 +349,10 @@
             this.parentColumn,
             this.priorityColumn,
             this.checkpointColumn});
-            this.processGridView.Location = new System.Drawing.Point(0, 0);
+            this.processGridView.Location = new System.Drawing.Point(-4, 0);
             this.processGridView.Name = "processGridView";
             this.processGridView.ReadOnly = true;
-            this.processGridView.Size = new System.Drawing.Size(811, 484);
+            this.processGridView.Size = new System.Drawing.Size(666, 480);
             this.processGridView.TabIndex = 0;
             // 
             // idColumn
@@ -391,7 +392,7 @@
             this.resourceTab.Controls.Add(this.dataGridView2);
             this.resourceTab.Location = new System.Drawing.Point(4, 22);
             this.resourceTab.Name = "resourceTab";
-            this.resourceTab.Size = new System.Drawing.Size(811, 480);
+            this.resourceTab.Size = new System.Drawing.Size(662, 480);
             this.resourceTab.TabIndex = 3;
             this.resourceTab.Text = "Resources";
             // 
@@ -409,10 +410,10 @@
             this.resIdColumn,
             this.resParentColumn,
             this.resStateColumn});
-            this.resourcesGridView.Location = new System.Drawing.Point(0, -2);
+            this.resourcesGridView.Location = new System.Drawing.Point(-4, 0);
             this.resourcesGridView.Name = "resourcesGridView";
             this.resourcesGridView.ReadOnly = true;
-            this.resourcesGridView.Size = new System.Drawing.Size(811, 484);
+            this.resourcesGridView.Size = new System.Drawing.Size(666, 482);
             this.resourcesGridView.TabIndex = 1;
             // 
             // dataGridView2
@@ -431,7 +432,7 @@
             this.ioTab.Controls.Add(this.textBox2);
             this.ioTab.Location = new System.Drawing.Point(4, 22);
             this.ioTab.Name = "ioTab";
-            this.ioTab.Size = new System.Drawing.Size(811, 480);
+            this.ioTab.Size = new System.Drawing.Size(662, 480);
             this.ioTab.TabIndex = 4;
             this.ioTab.Text = "Input/Output";
             // 
@@ -453,7 +454,7 @@
             this.textBox3.Enabled = false;
             this.textBox3.Location = new System.Drawing.Point(3, 450);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(681, 20);
+            this.textBox3.Size = new System.Drawing.Size(656, 20);
             this.textBox3.TabIndex = 1;
             // 
             // textBox2
@@ -467,17 +468,18 @@
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(805, 439);
+            this.textBox2.Size = new System.Drawing.Size(656, 441);
             this.textBox2.TabIndex = 0;
             // 
             // controlsGroupBox
             // 
             this.controlsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.controlsGroupBox.Controls.Add(this.button4);
             this.controlsGroupBox.Controls.Add(this.button2);
             this.controlsGroupBox.Controls.Add(this.executeCountBox);
             this.controlsGroupBox.Controls.Add(this.button1);
-            this.controlsGroupBox.Location = new System.Drawing.Point(837, 34);
+            this.controlsGroupBox.Location = new System.Drawing.Point(688, 34);
             this.controlsGroupBox.Name = "controlsGroupBox";
             this.controlsGroupBox.Size = new System.Drawing.Size(204, 484);
             this.controlsGroupBox.TabIndex = 1;
@@ -486,6 +488,8 @@
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Location = new System.Drawing.Point(6, 74);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
@@ -496,6 +500,8 @@
             // 
             // executeCountBox
             // 
+            this.executeCountBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.executeCountBox.Location = new System.Drawing.Point(87, 77);
             this.executeCountBox.Name = "executeCountBox";
             this.executeCountBox.Size = new System.Drawing.Size(111, 20);
@@ -504,6 +510,8 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(6, 19);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(192, 25);
@@ -511,14 +519,6 @@
             this.button1.Text = "Start OS";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.StartOSClick);
-            // 
-            // coreBindingSource
-            // 
-            this.coreBindingSource.DataSource = typeof(OsModel.Core);
-            // 
-            // coreBindingSource1
-            // 
-            this.coreBindingSource1.DataSource = typeof(OsModel.Core);
             // 
             // resIdColumn
             // 
@@ -538,11 +538,28 @@
             this.resStateColumn.Name = "resStateColumn";
             this.resStateColumn.ReadOnly = true;
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(6, 114);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "New Task";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // coreBindingSource
+            // 
+            this.coreBindingSource.DataSource = typeof(OsModel.Core);
+            // 
+            // coreBindingSource1
+            // 
+            this.coreBindingSource1.DataSource = typeof(OsModel.Core);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1053, 530);
+            this.ClientSize = new System.Drawing.Size(904, 530);
             this.Controls.Add(this.controlsGroupBox);
             this.Controls.Add(this.tabControl);
             this.Name = "MainForm";
@@ -551,7 +568,7 @@
             this.realMachineTab.ResumeLayout(false);
             this.registersGroupBox.ResumeLayout(false);
             this.registersGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.realMemory)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.realMemoryGridView)).EndInit();
             this.virtualMachinesTab.ResumeLayout(false);
             this.processTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.processGridView)).EndInit();
@@ -578,7 +595,7 @@
         private System.Windows.Forms.TabPage resourceTab;
         private System.Windows.Forms.TabPage ioTab;
         private System.Windows.Forms.TabPage processTab;
-        private System.Windows.Forms.DataGridView realMemory;
+        private System.Windows.Forms.DataGridView realMemoryGridView;
         private System.Windows.Forms.GroupBox registersGroupBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label axLabel;
@@ -613,6 +630,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn resIdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn resParentColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn resStateColumn;
+        private System.Windows.Forms.Button button4;
 
     }
 }

@@ -53,11 +53,12 @@ namespace OsModel.Processes
         {
             "$000", "$010", "$020", "$030", "$040" 
         };
-        /*private static List<string> commands = new List<string>()
+
+        private static List<string> commands = new List<string>()
         {
             "AD", "SU", "CM", "GD", "PD", "JM", 
             "JE", "JA", "JN", "JB", "JG", "JL", "SA",
             "SC", "LA", "LC", "$E"
-        };*/
+        };
     }
 }
