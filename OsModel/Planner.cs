@@ -38,7 +38,7 @@ namespace OsModel
             {
                 if (resource.State == Resources.State.Free && resource.WaitingProcesses.Count > 0 && !ProcessIsAlreadyAdded(resource.WaitingProcesses.Peek()))
                 {
-                    var process = resource.WaitingProcesses.Dequeue();
+                    var process = resource.WaitingProcesses.Peek();
                     process.State = State.Ready;
                     Core.ReadyProcessQueue.Enqueue(process);
                     //resource.State = Resources.State.Occupied;

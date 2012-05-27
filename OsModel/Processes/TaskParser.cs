@@ -17,10 +17,10 @@ namespace OsModel.Processes
 
         private bool Parse() //TODO: implement properly
         {                    //how to check: if taskSource[0] does not belong to virtual machine command set, return false
-            if (!blockTags.Contains(taskSource[0].Substring(0, 2)))
-                return false;
-            if (!taskSource.Memory.Contains("$END"))
-                return false;
+            //if (!blockTags.Contains(taskSource[0].Substring(0, 2)))
+                //return false;
+            //if (!taskSource.Memory.Contains("$END"))
+                //return false;
             return true; //if no errors were found while parsing taskSource array, consisting of source code of a task, method must return true
         }
 
