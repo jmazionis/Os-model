@@ -8,8 +8,8 @@ namespace OsModel.Resources
 {
     public class Memory : Resource
     {
-        public Memory(Process creator, State state, string id)
-            : base(creator, state, id)
+        public Memory(Process creator, State state, string id, List<string> processList)
+            : base(creator, state, id, processList)
         {
 
         }

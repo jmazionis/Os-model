@@ -18,12 +18,22 @@ namespace OsModel.Resources
         public PriorityQueue<Process> WaitingProcesses { get; set; }
         public State State { get; set; }
 
-        public Resource(Process creator, State state, string id)
+        public Resource(Process creator, State state, string id, List<string> processList)
         {
             WaitingProcesses = new PriorityQueue<Process>(new ProcessComparer());
             Creator = creator;
             State = state;
             Id = id;
+            InitWaitingProcessesList(processList);
+        }
+
+        protected void InitWaitingProcessesList(List<string> processList)
+        {
+            foreach (var processId in processList)
+            {
+                var process = Core.ProcessList.SingleOrDefault(p => p.Id == processId);
+                WaitingProcesses.Enqueue(process);
+            }
         }
 
         public void Free()

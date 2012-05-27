@@ -10,12 +10,16 @@ namespace OsModel.Processes
     public class TaskReader : Process
     {
         public String[] TaskSource { get; set; }
-        public SupervisorMemory SupervisorMemory { get; set; }
+        SupervisorMemory supervisorMemory;
 
-        public TaskReader(int priority, State state, Process parentProcess, string id, SupervisorMemory supervisorMemory)
+        public TaskReader(int priority, State state, Process parentProcess, string id)
             : base(priority, state, parentProcess, id)
         {
-            SupervisorMemory = supervisorMemory;
+        }
+
+        public void BindSupervisorMemory(SupervisorMemory supMem)
+        {
+            supervisorMemory = supMem;
         }
 
         private void ReadTask(string path)
@@ -37,7 +41,7 @@ namespace OsModel.Processes
         {
             for (int i = 0; i < TaskSource.Length; i++)
             {
-                SupervisorMemory[i] = TaskSource[i];
+                supervisorMemory[i] = TaskSource[i];
             }
         }
 
@@ -85,9 +89,9 @@ namespace OsModel.Processes
                     else
                     {
                         LoadTaskIntoSupervisorMemory();
-                        SupervisorMemory.Free();
-                        SupervisorMemory.Clear();
-                        CreateResource(new TaskInSupervisorMemory(this, Resources.State.Free, "TaskInSupervisorMemory", TaskSource));
+                        supervisorMemory.Free();
+                        supervisorMemory.Clear();
+                        CreateResource(new TaskInSupervisorMemory(this, Resources.State.Free, "TaskInSupervisorMemory", TaskSource, new List<string> { "TaskParser" }));
                         break;
                     }
             }

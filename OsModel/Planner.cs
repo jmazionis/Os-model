@@ -17,28 +17,29 @@ namespace OsModel
         {
         }
 
-        private static void PickWaitingProcess()
+        private static void PickProcess()
         {
            CurrentProcess = Core.ReadyProcessQueue.Dequeue();
+           CurrentProcess.State = Processes.State.Active;
+        }
+
+        private static bool ProcessIsAlreadyAdded(Process process)
+        {
+            var result = Core.ReadyProcessQueue.SingleOrDefault(p => p.Id == process.Id);
+            return result != null;
         }
 
         private static void DistributeResources()
         {
             foreach (var resource in Core.ResourcesList)
             {
-                try
+                if (resource.State == Resources.State.Free && resource.WaitingProcesses.Count > 0 && !ProcessIsAlreadyAdded(resource.WaitingProcesses.Peek()))
                 {
-                    if (resource.State == Resources.State.Free)
-                    {
-                        var process = resource.WaitingProcesses.Dequeue();
-                        process.State = State.Ready;
-                        resource.State = Resources.State.Occupied;
-                    }
+                    var process = resource.WaitingProcesses.Dequeue();
+                    process.State = State.Ready;
+                    Core.ReadyProcessQueue.Enqueue(process);
+                    //resource.State = Resources.State.Occupied;
                 }
-                catch (Exception)
-                {
-                    
-                }         
             }
         }
 
@@ -46,9 +47,9 @@ namespace OsModel
         {
             while(!Core.FinishedWork)
             {
-                PickWaitingProcess();
-                DistributeResources();
-                CurrentProcess.Execute();   
+                PickProcess();
+                CurrentProcess.Execute();
+                DistributeResources();    
             }
         }
     }

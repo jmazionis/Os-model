@@ -9,8 +9,8 @@ namespace OsModel.Resources
     class Task : Resource
     {
         TaskInSupervisorMemory taskSource;       
-        public Task(Process creator, State state, string id, TaskInSupervisorMemory taskSource)
-            : base(creator, state, id)
+        public Task(Process creator, State state, string id, TaskInSupervisorMemory taskSource, List<string> processList)
+            : base(creator, state, id, processList)
         {
             this.taskSource = taskSource;
         }

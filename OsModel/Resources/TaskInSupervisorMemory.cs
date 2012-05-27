@@ -10,8 +10,8 @@ namespace OsModel.Resources
     {
         string[] Memory;
 
-        public TaskInSupervisorMemory(Process creator, State state, string id, string[] memory)
-            : base(creator, state, id)
+        public TaskInSupervisorMemory(Process creator, State state, string id, string[] memory, List<string> processList)
+            : base(creator, state, id, processList)
         {
             Memory = memory;
         }

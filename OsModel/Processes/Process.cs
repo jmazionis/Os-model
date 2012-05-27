@@ -46,13 +46,18 @@ namespace OsModel.Processes
             var resource = Core.ResourcesList.SingleOrDefault(r => r.Id == resourceName);
             if (resource != null && resource.State == Resources.State.Free)
             {
+                resource.WaitingProcesses.Dequeue();
                 resource.State = Resources.State.Occupied;
                 return true;
             }
             else
             {
-                resource.WaitingProcesses.Enqueue(this);
                 State = Processes.State.Blocked;
+                if (resource == null)
+                {
+                    return false;
+                }
+                resource.WaitingProcesses.Enqueue(this);
                 return false;
             }
         }

@@ -8,8 +8,8 @@ namespace OsModel.Resources
 {
     public class EndOfOs : Resource
     {
-         public EndOfOs(Process creator, State state, string id)
-            : base(creator, state, id)
+         public EndOfOs(Process creator, State state, string id, List<string> processList)
+            : base(creator, state, id, processList)
         {
 
         }

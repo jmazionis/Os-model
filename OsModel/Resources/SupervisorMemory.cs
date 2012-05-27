@@ -10,8 +10,8 @@ namespace OsModel.Resources
     {
         string[] Memory = new string[100];
 
-        public SupervisorMemory(Process creator, State state, string id)
-            : base(creator, state, id)
+        public SupervisorMemory(Process creator, State state, string id, List<string> processList)
+            : base(creator, state, id, processList)
         {
 
         }

@@ -11,8 +11,8 @@ namespace OsModel.Resources
         public Queue<string> Tasks { get; set; }
         public string TaskPath { get; set; }
 
-        public TaskInput(Process creator, State state, string id, Queue<string> taskList)
-            : base(creator, state, id)
+        public TaskInput(Process creator, State state, string id, Queue<string> taskList, List<string> processList)
+            : base(creator, state, id, processList)
         {
             Tasks = taskList;
         }
