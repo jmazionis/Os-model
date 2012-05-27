@@ -9,6 +9,7 @@ using OsModel.Resources;
 
 namespace OsModel.Processes
 {
+    
     public enum State { Blocked, Ready, Active }
 
     public abstract class Process

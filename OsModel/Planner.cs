@@ -8,10 +8,13 @@ using OsModel.Comparers;
 
 namespace OsModel
 {
+    public delegate void OSEventHandler();
+
     public static class Planner
     {
         public static Process CurrentProcess;
         public static int GlobalTimer;
+        public static event OSEventHandler ProcessExecuted;
 
         static Planner()
         {
@@ -48,7 +51,8 @@ namespace OsModel
             {
                 PickWaitingProcess();
                 DistributeResources();
-                CurrentProcess.Execute();   
+                CurrentProcess.Execute();
+                ProcessExecuted();
             }
         }
     }

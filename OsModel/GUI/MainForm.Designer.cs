@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.realMachineTab = new System.Windows.Forms.TabPage();
             this.registersGroupBox = new System.Windows.Forms.GroupBox();
@@ -47,27 +48,44 @@
             this.label1 = new System.Windows.Forms.Label();
             this.realMemory = new System.Windows.Forms.DataGridView();
             this.virtualMachinesTab = new System.Windows.Forms.TabPage();
-            this.processTab = new System.Windows.Forms.TabPage();
-            this.resourceTab = new System.Windows.Forms.TabPage();
-            this.ioTab = new System.Windows.Forms.TabPage();
-            this.controlsGroupBox = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.virtualMachineTabControl = new System.Windows.Forms.TabControl();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.processTab = new System.Windows.Forms.TabPage();
+            this.processGridView = new System.Windows.Forms.DataGridView();
+            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.parentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priorityColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkpointColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resourceTab = new System.Windows.Forms.TabPage();
+            this.resourcesGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.ioTab = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.controlsGroupBox = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.resIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resParentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resStateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.coreBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.coreBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl.SuspendLayout();
             this.realMachineTab.SuspendLayout();
             this.registersGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.realMemory)).BeginInit();
             this.virtualMachinesTab.SuspendLayout();
             this.processTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.processGridView)).BeginInit();
+            this.resourceTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resourcesGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.ioTab.SuspendLayout();
             this.controlsGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coreBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coreBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl
@@ -293,24 +311,117 @@
             this.virtualMachinesTab.TabIndex = 1;
             this.virtualMachinesTab.Text = "Virtual Machines";
             // 
+            // virtualMachineTabControl
+            // 
+            this.virtualMachineTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.virtualMachineTabControl.Location = new System.Drawing.Point(3, 3);
+            this.virtualMachineTabControl.Name = "virtualMachineTabControl";
+            this.virtualMachineTabControl.SelectedIndex = 0;
+            this.virtualMachineTabControl.Size = new System.Drawing.Size(805, 474);
+            this.virtualMachineTabControl.TabIndex = 0;
+            // 
             // processTab
             // 
             this.processTab.BackColor = System.Drawing.SystemColors.Control;
-            this.processTab.Controls.Add(this.dataGridView1);
+            this.processTab.Controls.Add(this.processGridView);
             this.processTab.Location = new System.Drawing.Point(4, 22);
             this.processTab.Name = "processTab";
             this.processTab.Size = new System.Drawing.Size(811, 480);
             this.processTab.TabIndex = 2;
             this.processTab.Text = "Processes";
             // 
+            // processGridView
+            // 
+            this.processGridView.AllowUserToAddRows = false;
+            this.processGridView.AllowUserToDeleteRows = false;
+            this.processGridView.AllowUserToOrderColumns = true;
+            this.processGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.processGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.processGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.processGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idColumn,
+            this.stateColumn,
+            this.parentColumn,
+            this.priorityColumn,
+            this.checkpointColumn});
+            this.processGridView.Location = new System.Drawing.Point(0, 0);
+            this.processGridView.Name = "processGridView";
+            this.processGridView.ReadOnly = true;
+            this.processGridView.Size = new System.Drawing.Size(811, 484);
+            this.processGridView.TabIndex = 0;
+            // 
+            // idColumn
+            // 
+            this.idColumn.HeaderText = "ID";
+            this.idColumn.Name = "idColumn";
+            this.idColumn.ReadOnly = true;
+            // 
+            // stateColumn
+            // 
+            this.stateColumn.HeaderText = "State";
+            this.stateColumn.Name = "stateColumn";
+            this.stateColumn.ReadOnly = true;
+            // 
+            // parentColumn
+            // 
+            this.parentColumn.HeaderText = "Parent";
+            this.parentColumn.Name = "parentColumn";
+            this.parentColumn.ReadOnly = true;
+            // 
+            // priorityColumn
+            // 
+            this.priorityColumn.HeaderText = "Priority";
+            this.priorityColumn.Name = "priorityColumn";
+            this.priorityColumn.ReadOnly = true;
+            // 
+            // checkpointColumn
+            // 
+            this.checkpointColumn.HeaderText = "Checkpoint";
+            this.checkpointColumn.Name = "checkpointColumn";
+            this.checkpointColumn.ReadOnly = true;
+            // 
             // resourceTab
             // 
             this.resourceTab.BackColor = System.Drawing.SystemColors.Control;
+            this.resourceTab.Controls.Add(this.resourcesGridView);
+            this.resourceTab.Controls.Add(this.dataGridView2);
             this.resourceTab.Location = new System.Drawing.Point(4, 22);
             this.resourceTab.Name = "resourceTab";
             this.resourceTab.Size = new System.Drawing.Size(811, 480);
             this.resourceTab.TabIndex = 3;
             this.resourceTab.Text = "Resources";
+            // 
+            // resourcesGridView
+            // 
+            this.resourcesGridView.AllowUserToAddRows = false;
+            this.resourcesGridView.AllowUserToDeleteRows = false;
+            this.resourcesGridView.AllowUserToOrderColumns = true;
+            this.resourcesGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.resourcesGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.resourcesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.resourcesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.resIdColumn,
+            this.resParentColumn,
+            this.resStateColumn});
+            this.resourcesGridView.Location = new System.Drawing.Point(0, -2);
+            this.resourcesGridView.Name = "resourcesGridView";
+            this.resourcesGridView.ReadOnly = true;
+            this.resourcesGridView.Size = new System.Drawing.Size(811, 484);
+            this.resourcesGridView.TabIndex = 1;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(805, 474);
+            this.dataGridView2.TabIndex = 0;
             // 
             // ioTab
             // 
@@ -324,64 +435,26 @@
             this.ioTab.TabIndex = 4;
             this.ioTab.Text = "Input/Output";
             // 
-            // controlsGroupBox
+            // button3
             // 
-            this.controlsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(690, 448);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(118, 23);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "Submit";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.controlsGroupBox.Controls.Add(this.button2);
-            this.controlsGroupBox.Controls.Add(this.textBox1);
-            this.controlsGroupBox.Controls.Add(this.button1);
-            this.controlsGroupBox.Location = new System.Drawing.Point(837, 34);
-            this.controlsGroupBox.Name = "controlsGroupBox";
-            this.controlsGroupBox.Size = new System.Drawing.Size(204, 484);
-            this.controlsGroupBox.TabIndex = 1;
-            this.controlsGroupBox.TabStop = false;
-            this.controlsGroupBox.Text = "Controls";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(6, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(192, 25);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Start OS";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(87, 77);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(111, 20);
-            this.textBox1.TabIndex = 1;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(6, 74);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Execute";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // virtualMachineTabControl
-            // 
-            this.virtualMachineTabControl.Location = new System.Drawing.Point(3, 3);
-            this.virtualMachineTabControl.Name = "virtualMachineTabControl";
-            this.virtualMachineTabControl.SelectedIndex = 0;
-            this.virtualMachineTabControl.Size = new System.Drawing.Size(805, 474);
-            this.virtualMachineTabControl.TabIndex = 0;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(811, 484);
-            this.dataGridView1.TabIndex = 0;
+            this.textBox3.Enabled = false;
+            this.textBox3.Location = new System.Drawing.Point(3, 450);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(681, 20);
+            this.textBox3.TabIndex = 1;
             // 
             // textBox2
             // 
@@ -397,23 +470,71 @@
             this.textBox2.Size = new System.Drawing.Size(805, 439);
             this.textBox2.TabIndex = 0;
             // 
-            // textBox3
+            // controlsGroupBox
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(3, 450);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(681, 20);
-            this.textBox3.TabIndex = 1;
+            this.controlsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.controlsGroupBox.Controls.Add(this.button2);
+            this.controlsGroupBox.Controls.Add(this.textBox1);
+            this.controlsGroupBox.Controls.Add(this.button1);
+            this.controlsGroupBox.Location = new System.Drawing.Point(837, 34);
+            this.controlsGroupBox.Name = "controlsGroupBox";
+            this.controlsGroupBox.Size = new System.Drawing.Size(204, 484);
+            this.controlsGroupBox.TabIndex = 1;
+            this.controlsGroupBox.TabStop = false;
+            this.controlsGroupBox.Text = "Controls";
             // 
-            // button3
+            // button2
             // 
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(690, 448);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(118, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Submit";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button2.Location = new System.Drawing.Point(6, 74);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Execute";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(87, 77);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(111, 20);
+            this.textBox1.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(192, 25);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Start OS";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.StartOSClick);
+            // 
+            // resIdColumn
+            // 
+            this.resIdColumn.HeaderText = "ID";
+            this.resIdColumn.Name = "resIdColumn";
+            this.resIdColumn.ReadOnly = true;
+            // 
+            // resParentColumn
+            // 
+            this.resParentColumn.HeaderText = "Parent";
+            this.resParentColumn.Name = "resParentColumn";
+            this.resParentColumn.ReadOnly = true;
+            // 
+            // resStateColumn
+            // 
+            this.resStateColumn.HeaderText = "State";
+            this.resStateColumn.Name = "resStateColumn";
+            this.resStateColumn.ReadOnly = true;
+            // 
+            // coreBindingSource
+            // 
+            this.coreBindingSource.DataSource = typeof(OsModel.Core);
+            // 
+            // coreBindingSource1
+            // 
+            this.coreBindingSource1.DataSource = typeof(OsModel.Core);
             // 
             // MainForm
             // 
@@ -431,11 +552,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.realMemory)).EndInit();
             this.virtualMachinesTab.ResumeLayout(false);
             this.processTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.processGridView)).EndInit();
+            this.resourceTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.resourcesGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ioTab.ResumeLayout(false);
             this.ioTab.PerformLayout();
             this.controlsGroupBox.ResumeLayout(false);
             this.controlsGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coreBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coreBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -467,12 +593,24 @@
         private System.Windows.Forms.Label pcLabel;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TabControl virtualMachineTabControl;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView processGridView;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stateColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn parentColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priorityColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn checkpointColumn;
+        private System.Windows.Forms.DataGridView resourcesGridView;
+        private System.Windows.Forms.BindingSource coreBindingSource;
+        private System.Windows.Forms.BindingSource coreBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resParentColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resStateColumn;
 
     }
 }
