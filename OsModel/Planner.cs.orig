@@ -50,18 +50,24 @@ namespace OsModel
         {
             while(!Core.FinishedWork)
             {
+<<<<<<< HEAD
                 PickProcess();
                 CurrentProcess.Execute();
                 DistributeResources();    
+=======
+                PickWaitingProcess();
+                DistributeResources();
+                CurrentProcess.Execute();
                 ProcessExecuted();
+>>>>>>> 79c09875a418fdc6ca21959b838c728ff8759a7b
             }
         }
 
         public static void ExecuteNext()
         {
-                PickProcess();
-                CurrentProcess.Execute();
+                PickWaitingProcess();
                 DistributeResources();
+                CurrentProcess.Execute();
                 ProcessExecuted();
         }
     }

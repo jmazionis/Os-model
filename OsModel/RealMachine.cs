@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OsModel.VirtualMachineEmulator;
 
-namespace OsModel.VirtualMachineEmulator
+namespace OsModel
 {
     public static class RealMachine
     {
@@ -11,9 +12,11 @@ namespace OsModel.VirtualMachineEmulator
         public static int PTR;
         public static int PTRBlockNumber;
         public static int[] PageTable;
+        public static Cpu cpu;
 
         static RealMachine()
         {
+            cpu = new Cpu();
             Memory = new Memory(Memory.REAL_MEMORY_BLOCK_COUNT, Memory.BLOCK_WORD_COUNT);
             PTR = 15;
             PageTable = new int[Memory.REAL_MEMORY_BLOCK_COUNT];
