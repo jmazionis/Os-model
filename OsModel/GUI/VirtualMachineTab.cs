@@ -24,6 +24,7 @@ namespace OsModel.GUI
             VM.Cpu.CommandExecuted += new VirtualMachineEmulator.VMEventHandler(UpdateVmMemoryGridViewGrid);
             VM.Cpu.CommandExecuted += new VirtualMachineEmulator.VMEventHandler(UpdateNextCommand);
             VM.Io.OutputRequested += new VirtualMachineEmulator.VMEventHandler(PrintBuffer);
+            vm.VMTaskFinished += new VirtualMachineEmulator.VMEventHandler(this.Dispose);
             UpdateNextCommand();
             //VM.ExecuteAll();
         }
