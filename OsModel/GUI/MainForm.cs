@@ -101,13 +101,14 @@ namespace OsModel.GUI
             ptrLabel.Text = Cpu.PTR.ToString("X");
             modeLabel.Text = Cpu.MODE.ToString();
             sfLabel.Text = Cpu.SF.ToString("X");
-            timeLabel.Text = Cpu.TIME.ToString();
+            timeLabel.Text = Cpu.TIME.ToString("X");
 
 
         }
 
         private void AddVirtualMachine(VirtualMachineEmulator.VirtualMachine vm)
         {
+            vm.Cpu.CommandExecuted += new VirtualMachineEmulator.VMEventHandler(UpdateRegisters);
             virtualMachineTabControl.Controls.Add(new VirtualMachineTab(vm, virtualMachineTabControl.Controls.Count, this.outputTextBox));
         }
 

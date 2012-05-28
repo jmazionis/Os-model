@@ -21,9 +21,10 @@ namespace OsModel.GUI
             InitializeComponent();
             this.Text = "VM " + (index+1);
             FillMemoryGridView();
-            VM.VMTaskFinished += new VirtualMachineEmulator.VMEventHandler(UpdateVmMemoryGridViewGrid);
-            VM.VMTaskFinished += new VirtualMachineEmulator.VMEventHandler(UpdateNextCommand);
+            VM.Cpu.CommandExecuted += new VirtualMachineEmulator.VMEventHandler(UpdateVmMemoryGridViewGrid);
+            VM.Cpu.CommandExecuted += new VirtualMachineEmulator.VMEventHandler(UpdateNextCommand);
             VM.Io.OutputRequested += new VirtualMachineEmulator.VMEventHandler(PrintBuffer);
+            vm.VMTaskFinished += new VirtualMachineEmulator.VMEventHandler(this.Dispose);
             UpdateNextCommand();
             //VM.ExecuteAll();
         }
@@ -74,6 +75,16 @@ namespace OsModel.GUI
         {
             outputBox.Text += VM.Io.Buffer;
             outputBox.Text += "\r\n";
+        }
+
+        private void executeAsProcButton_Click(object sender, EventArgs e)
+        {
+            this.VM.ExecuteAsProcess();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.VM.ExecuteNext();
         }
         
         

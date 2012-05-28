@@ -9,6 +9,7 @@ namespace OsModel
     public static class Cpu
     {
         public const int PTR = 15;
+        public const int TIMER_TACTS = 10;
         public static short PC { get; set; }
         public static Word AX { get; set; }
         public static Word CX { get; set; }
@@ -25,10 +26,6 @@ namespace OsModel
         }
     }
 
-    public struct Registers
-    {
-        
-    }
 
     public enum WorkMode 
     {

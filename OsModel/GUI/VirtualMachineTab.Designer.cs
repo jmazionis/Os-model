@@ -32,6 +32,8 @@
             this.nextCommand = new System.Windows.Forms.Label();
             this.nextCommandLabel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.executeAsProcButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.vmMemoryGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -79,6 +81,8 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.executeAsProcButton);
             this.groupBox1.Controls.Add(this.nextCommand);
             this.groupBox1.Controls.Add(this.nextCommandLabel);
             this.groupBox1.Location = new System.Drawing.Point(3, 356);
@@ -88,10 +92,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Info";
             // 
+            // executeAsProcButton
+            // 
+            this.executeAsProcButton.Location = new System.Drawing.Point(431, 11);
+            this.executeAsProcButton.Name = "executeAsProcButton";
+            this.executeAsProcButton.Size = new System.Drawing.Size(75, 23);
+            this.executeAsProcButton.TabIndex = 3;
+            this.executeAsProcButton.Text = "Execute as process";
+            this.executeAsProcButton.UseVisualStyleBackColor = true;
+            this.executeAsProcButton.Click += new System.EventHandler(this.executeAsProcButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(294, 11);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // VirtualMachineTab
             // 
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.vmMemoryGridView);
+            this.Name = "VirtualMachineTab";
             this.Size = new System.Drawing.Size(674, 397);
             ((System.ComponentModel.ISupportInitialize)(this.vmMemoryGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -106,5 +131,7 @@
         private System.Windows.Forms.Label nextCommand;
         private System.Windows.Forms.Label nextCommandLabel;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button executeAsProcButton;
+        private System.Windows.Forms.Button button1;
     }
 }
