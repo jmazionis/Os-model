@@ -6,9 +6,16 @@ using OsModel.VirtualMachineEmulator;
 
 namespace OsModel
 {
-    public class Cpu
+    public static class Cpu
     {
-        public Registers Registers { get; set; }
+        public static Registers Registers { get; set; }
+        public const int PTR = 15;
+        static Cpu()
+        {
+            Registers.AX = new Word(0); //Cannot modify the return value of 'OsModel.Cpu.Registers' because it is not a variable
+
+
+        }
     }
 
     public struct Registers
@@ -16,7 +23,6 @@ namespace OsModel
         public short PC { get; set; }
         public Word AX { get; set; }
         public Word CX { get; set; }
-        public Word PTR { get; set; }
         public byte SF { get; set; }
         public WorkMode MODE { get; set; }
         public Int64 TIME { get; set; }

@@ -11,15 +11,21 @@ namespace OsModel.GUI
 {
     public partial class VirtualMachineTab : TabPage
     {
-        public VirtualMachineTab(VirtualMachineEmulator.VirtualMachine vm, int index)
+        public VirtualMachineEmulator.VirtualMachine VM { get; private set; }
+        private TextBox outputBox;
+
+        public VirtualMachineTab(VirtualMachineEmulator.VirtualMachine vm, int index, TextBox outputBox)
         {
+            this.outputBox = outputBox;
             this.VM = vm;
             InitializeComponent();
             this.Text = "VM " + (index+1);
             FillMemoryGridView();
             VM.VMTaskFinished += new VirtualMachineEmulator.VMEventHandler(UpdateVmMemoryGridViewGrid);
             VM.VMTaskFinished += new VirtualMachineEmulator.VMEventHandler(UpdateNextCommand);
+            VM.Io.OutputRequested += new VirtualMachineEmulator.VMEventHandler(PrintBuffer);
             UpdateNextCommand();
+            //VM.ExecuteAll();
         }
 
         private void FillMemoryGridView()
@@ -46,7 +52,7 @@ namespace OsModel.GUI
 
         private void UpdateVmMemoryGridViewGrid()
         {
-            for (int i = 0; i < VM.Memory.WordCount; i++)
+            for (int i = 0; i < VM.Memory.BlockCount; i++)
             {
                 string[] rowValues = new string[VM.Memory.WordCount];
                 for (int j = 0; j < VM.Memory.WordCount; j++)
@@ -63,7 +69,13 @@ namespace OsModel.GUI
         {
             nextCommandLabel.Text = VM.Cpu.NextCommand();
         }
+
+        private void PrintBuffer()
+        {
+            outputBox.Text += VM.Io.Buffer;
+            outputBox.Text += "\r\n";
+        }
         
-        public VirtualMachineEmulator.VirtualMachine VM { get; private set; }
+        
     }
 }

@@ -65,7 +65,7 @@
             this.ioTab = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.outputTextBox = new System.Windows.Forms.TextBox();
             this.controlsGroupBox = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -238,7 +238,7 @@
             this.ptrLabel.Name = "ptrLabel";
             this.ptrLabel.Size = new System.Drawing.Size(40, 20);
             this.ptrLabel.TabIndex = 5;
-            this.ptrLabel.Text = "PTR";
+            this.ptrLabel.Text = "Cpu.PTR";
             // 
             // label6
             // 
@@ -248,7 +248,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 20);
             this.label6.TabIndex = 4;
-            this.label6.Text = "PTR";
+            this.label6.Text = "Cpu.PTR";
             // 
             // cxLabel
             // 
@@ -453,7 +453,7 @@
             this.ioTab.BackColor = System.Drawing.SystemColors.Control;
             this.ioTab.Controls.Add(this.button3);
             this.ioTab.Controls.Add(this.textBox3);
-            this.ioTab.Controls.Add(this.textBox2);
+            this.ioTab.Controls.Add(this.outputTextBox);
             this.ioTab.Location = new System.Drawing.Point(4, 22);
             this.ioTab.Name = "ioTab";
             this.ioTab.Size = new System.Drawing.Size(662, 480);
@@ -481,19 +481,19 @@
             this.textBox3.Size = new System.Drawing.Size(656, 20);
             this.textBox3.TabIndex = 1;
             // 
-            // textBox2
+            // outputTextBox
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.outputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.BackColor = System.Drawing.Color.Black;
-            this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(3, 3);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(656, 441);
-            this.textBox2.TabIndex = 0;
+            this.outputTextBox.BackColor = System.Drawing.Color.Black;
+            this.outputTextBox.ForeColor = System.Drawing.Color.White;
+            this.outputTextBox.Location = new System.Drawing.Point(3, 3);
+            this.outputTextBox.Multiline = true;
+            this.outputTextBox.Name = "outputTextBox";
+            this.outputTextBox.ReadOnly = true;
+            this.outputTextBox.Size = new System.Drawing.Size(656, 441);
+            this.outputTextBox.TabIndex = 0;
             // 
             // controlsGroupBox
             // 
@@ -518,6 +518,7 @@
             this.button4.TabIndex = 2;
             this.button4.Text = "New Task";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button2
             // 
@@ -623,7 +624,7 @@
         private System.Windows.Forms.TextBox executeCountBox;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox outputTextBox;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stateColumn;

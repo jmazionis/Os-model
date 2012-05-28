@@ -9,16 +9,12 @@ namespace OsModel
     public static class RealMachine
     {
         public static Memory Memory;
-        public static int PTR;
         public static int PTRBlockNumber;
         public static int[] PageTable;
-        public static Cpu cpu;
 
         static RealMachine()
         {
-            cpu = new Cpu();
             Memory = new Memory(Memory.REAL_MEMORY_BLOCK_COUNT, Memory.BLOCK_WORD_COUNT);
-            PTR = 15;
             PageTable = new int[Memory.REAL_MEMORY_BLOCK_COUNT];
             InitializePageTable();
         }
@@ -34,7 +30,7 @@ namespace OsModel
             for (int i = 0; i < array.Length; i++)
             {
                 PageTable[i] = array[i];
-                Memory[PTR, i].Value = PageTable[i].ToString("X");
+                Memory[Cpu.PTR, i].Value = PageTable[i].ToString("X");
             }
         }
 

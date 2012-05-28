@@ -93,9 +93,21 @@ namespace OsModel.GUI
             }
         }
 
+        private void UpdateRegisters()
+        {
+            axLabel.Text = Cpu.Registers.AX.Value;
+            cxLabel.Text = Cpu.Registers.CX.Value;
+            pcLabel.Text = Cpu.Registers.PC.ToString("X");
+            ptrLabel.Text = Cpu.PTR.ToString("X");
+            modeLabel.Text = Cpu.Registers.MODE.ToString();
+            sfLabel.Text = Cpu.Registers.SF.ToString("X");
+
+
+        }
+
         private void AddVirtualMachine(VirtualMachineEmulator.VirtualMachine vm)
         {
-            virtualMachineTabControl.Controls.Add(new VirtualMachineTab(vm, virtualMachineTabControl.Controls.Count));
+            virtualMachineTabControl.Controls.Add(new VirtualMachineTab(vm, virtualMachineTabControl.Controls.Count, this.outputTextBox));
         }
 
         private void StartOSClick(object sender, EventArgs e)
@@ -104,10 +116,14 @@ namespace OsModel.GUI
             Planner.ProcessExecuted += new OSEventHandler(UpdateProcesses);
             Planner.ProcessExecuted += new OSEventHandler(UpdateResources);
             Planner.ProcessExecuted += new OSEventHandler(UpdateRealMemoryGrid);
-            AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"Tasks\Fibonacci.txt"));
+            Planner.ProcessExecuted += new OSEventHandler(UpdateRegisters);
+            AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"Tasks\Loop10.txt"));
             AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"Tasks\Loop5.txt"));
             AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"Tasks\Loop3.txt"));
             FillRealMemoryGrid();
+            UpdateRegisters();
+            UpdateProcesses();
+            UpdateResources();
             tabControl.Visible = true;
             tabControl.Enabled = true;
         }
@@ -116,6 +132,17 @@ namespace OsModel.GUI
         {
             for (int i = 0; i < Int32.Parse(executeCountBox.Text); i++)
                 Core.ExecuteNext();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            DialogResult result = dialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                if (this.virtualMachineTabControl.Controls.Count < 3)
+                    ;//TODO: Add VM to OS
+            }
         }
 
     }

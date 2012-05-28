@@ -33,7 +33,7 @@ namespace OsModel.VirtualMachineEmulator
             int rmblock;
             for (int i = 0; i < Memory.VIRTUAL_MEMORY_BLOCK_COUNT; i++)
             {
-                rmblock = Word.HexToInt(RealMachine.Memory[RealMachine.PTR, i + BlockOffset - 5].Value);
+                rmblock = Word.HexToInt(RealMachine.Memory[OsModel.Cpu.PTR, i + BlockOffset - 5].Value);
                 for (int j = 0; j < Memory.BLOCK_WORD_COUNT; j++)
                 {
                     RealMachine.Memory[rmblock, j] = this.memory[i, j];
