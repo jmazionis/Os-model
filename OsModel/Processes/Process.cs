@@ -42,24 +42,23 @@ namespace OsModel.Processes
             Core.ResourcesList.Add(resource);
         }
 
-        public virtual bool RequestResource(string resourceName)
+        public Resource RequestResource(string resourceName)
         {
             var resource = Core.ResourcesList.SingleOrDefault(r => r.Id == resourceName);
             if (resource != null && resource.State == Resources.State.Free)
             {
                 resource.WaitingProcesses.Dequeue();
                 resource.State = Resources.State.Occupied;
-                return true;
+                return resource;
             }
             else
             {
                 State = Processes.State.Blocked;
-                if (resource == null)
+                if (resource != null)
                 {
-                    return false;
+                    resource.WaitingProcesses.Enqueue(this);
                 }
-                resource.WaitingProcesses.Enqueue(this);
-                return false;
+                return null;
             }
         }
 

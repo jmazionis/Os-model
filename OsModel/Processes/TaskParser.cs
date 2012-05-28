@@ -29,14 +29,14 @@ namespace OsModel.Processes
             switch (Checkpoint)
             {
                 case 1:
-                    if (!RequestResource("TaskInSupervisorMemory"))
+                    taskSource = (TaskInSupervisorMemory) RequestResource("TaskInSupervisorMemory");
+                    if (taskSource == null)
                     {
                         break;
                     }
                     Checkpoint++;
                     goto case 2;
                 case 2:
-                    taskSource = (TaskInSupervisorMemory) Core.ResourcesList.SingleOrDefault(r => r.Id == "TaskInSupervisorMemory");
                     if (!Parse())
                     {
                         break;

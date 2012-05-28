@@ -17,10 +17,10 @@ namespace OsModel.Processes
         {
         }
 
-        public void BindSupervisorMemory(SupervisorMemory supMem)
-        {
-            supervisorMemory = supMem;
-        }
+        //public void BindSupervisorMemory(SupervisorMemory supMem)
+       // {
+           // supervisorMemory = supMem;
+       // }
 
         private void ReadTask(string path)
         {
@@ -45,11 +45,11 @@ namespace OsModel.Processes
             }
         }
 
-        public override bool RequestResource(string resourceName)
+        public bool GetTask()
         {
             try
             {
-                TaskInput resource = (TaskInput) Core.ResourcesList.SingleOrDefault(r => r.Id == resourceName);
+                TaskInput resource = (TaskInput) Core.ResourcesList.SingleOrDefault(r => r.Id == "TaskInput");
                 resource.TaskPath = resource.Load();
                 ReadTask(resource.TaskPath);
                 if (resource.State == Resources.State.Free)
@@ -75,14 +75,15 @@ namespace OsModel.Processes
             switch (Checkpoint)
             {
                 case 1:
-                    if (!RequestResource("TaskInput"))
+                    if (!GetTask())
                     {
                         break;
                     }
                     Checkpoint++;
                     goto case 2;
                 case 2:
-                    if (!base.RequestResource("SupervisorMemory"))
+                    supervisorMemory = (SupervisorMemory) base.RequestResource("SupervisorMemory");
+                    if (supervisorMemory == null)
                     {
                         break;
                     }
@@ -92,6 +93,7 @@ namespace OsModel.Processes
                         supervisorMemory.Free();
                         supervisorMemory.Clear();
                         CreateResource(new TaskInSupervisorMemory(this, Resources.State.Free, "TaskInSupervisorMemory", TaskSource, new List<string> { "TaskParser" }));
+                        State = Processes.State.Blocked;
                         break;
                     }
             }

@@ -42,7 +42,6 @@
             Word[] words = StringToWords(buffer);
             for (int i = 0; i < words.Length; i++)
                 this.words[block, i] = words[i];
-
         }
 
         private Word[] StringToWords(string s)

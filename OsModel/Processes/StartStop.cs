@@ -10,6 +10,7 @@ namespace OsModel.Processes
     {
         SupervisorMemory supervisorMemory;
         TaskReader taskReader;
+        EndOfOs endOfOs;
 
         public StartStop(int priority, State state, Process parentProcess, string id)
             : base(priority, state, parentProcess, id)
@@ -20,12 +21,13 @@ namespace OsModel.Processes
         public override void Execute()
         {
             switch (Checkpoint)
-            {
+            {          
                 case 1:
                     InitProcesses();
                     InitResources();
-                    Init();
-                    if (!RequestResource("EndOfOs"))
+                    //Init();
+                    endOfOs = (EndOfOs) RequestResource("EndOfOS");
+                    if (endOfOs == null)
                     {
                         Checkpoint++;
                         break;
@@ -41,19 +43,19 @@ namespace OsModel.Processes
 
         private void InitProcesses()
         {
-            //Core.CreateProcess(new Interrupt(2, State.Blocked, this, "Interrupt"));
+            Core.CreateProcess(new Interrupt(2, State.Blocked, this, "Interrupt"));
             taskReader = new TaskReader(3, State.Blocked, this, "TaskReader");
             Core.CreateProcess(taskReader);
             Core.CreateProcess(new TaskParser(4, State.Blocked, this, "TaskParser"));
-            //Core.CreateProcess(new Loader(5, State.Blocked, this, "Loader"));
+            Core.CreateProcess(new Loader(5, State.Blocked, this, "Loader"));
             //Core.CreateProcess(new ReadIn(6, State.Blocked, this, "ReadIn"));
-            //Core.CreateProcess(new MainProc(7, State.Blocked, this, "MainProc"));
+            Core.CreateProcess(new MainProc(7, State.Blocked, this, "MainProc"));
             //Core.CreateProcess(new WriteOut(8, State.Blocked, this, "WriteOut"));
         }
 
         private void InitResources()
         {
-            //CreateResource(new Memory(this, Resources.State.Free, "Memory"));
+            CreateResource(new UserMemory(this, Resources.State.Free, "UserMemory", new List<string> { "Loader" }));
             CreateResource(new TaskInput(this, Resources.State.Free, 
                                          "TaskInput", new Queue<string>(new List<string> { "Tasks/Fibonacci.txt" }), 
                                          new List<string> { "TaskReader" }));
@@ -62,10 +64,10 @@ namespace OsModel.Processes
             CreateResource(supervisorMemory);
         }
 
-        private void Init()
-        {
-            taskReader.BindSupervisorMemory(supervisorMemory);
-        }
+        //private void Init()
+        //{
+        //    taskReader.BindSupervisorMemory(supervisorMemory);
+        //}
 
         private void DestroyResources()
         {
