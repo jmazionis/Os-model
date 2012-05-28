@@ -25,7 +25,7 @@ namespace OsModel.GUI
         {
             vmMemoryGridView.Rows.Clear();
             vmMemoryGridView.Columns.Clear();
-            for (int i = 0; i < VM.Memory.BlockCount; i++)
+            for (int i = 0; i < VM.Memory.WordCount; i++)
             {
                 vmMemoryGridView.Columns.Add(i.ToString("X"), i.ToString("X"));
                 vmMemoryGridView.Columns[i].DisplayIndex = i;
