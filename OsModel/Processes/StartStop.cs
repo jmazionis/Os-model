@@ -59,15 +59,12 @@ namespace OsModel.Processes
             CreateResource(new TaskInput(this, Resources.State.Free, 
                                          "TaskInput", new Queue<string>(new List<string> { "Tasks/Fibonacci.txt" }), 
                                          new List<string> { "TaskReader" }));
-           // CreateResource(new EndOfOs(this, Resources.State.Occupied, "EndOfOs", new List<string> { "StartStop" }))
+            //CreateResource(new InterruptInformation(this, Resources.State.Occupied, "EndOfOs", Resources.Type.VMWorkFinish,
+                                                    //new List<string> { "VirtualMachine1", "VirtualMachine2", "VirtualMachine3" }));
             supervisorMemory = new SupervisorMemory(this, Resources.State.Free, "SupervisorMemory", new List<string> { "TaskReader" });
+            // CreateResource(new EndOfOs(this, Resources.State.Free, "EndOfOs", new List<string> { "StartStop" }))
             CreateResource(supervisorMemory);
         }
-
-        //private void Init()
-        //{
-        //    taskReader.BindSupervisorMemory(supervisorMemory);
-        //}
 
         private void DestroyResources()
         {

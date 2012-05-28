@@ -24,7 +24,7 @@ namespace OsModel.Processes
         {
             int currentBlock = 0;
             int currentWord = 0;
-            for (int i = 0; i < 40; i++) //80 because virtual memory consists of 80 words
+            for (int i = 0; i < 40; i++)
             {
                 string line = taskSource[i];
                 switch (line.Substring(0, 2))
@@ -65,7 +65,6 @@ namespace OsModel.Processes
 
         public override void Execute()
         {
-
             switch (Checkpoint)
             {
                 case 1:
@@ -87,6 +86,9 @@ namespace OsModel.Processes
                 case 3:
                     Load(task);
                     MapBlocks(1);
+                    CreateResource(new TaskReady(this, Resources.State.Free, virtualMemory, "TaskReady" , 
+                                   new List<string> { "MainProc"}));
+                    State = Processes.State.Blocked;
                     Checkpoint = 1;
                     break;
             }

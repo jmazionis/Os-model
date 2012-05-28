@@ -89,11 +89,14 @@
     <Compile Include="Processes\StartStop.cs" />
     <Compile Include="Processes\TaskParser.cs" />
     <Compile Include="Processes\TaskReader.cs" />
+    <Compile Include="Processes\VirtualMachine.cs" />
     <Compile Include="Processes\WriteOut.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\EndOfOs.cs" />
     <Compile Include="Resources\InterruptInformation.cs" />
+    <Compile Include="Resources\StartJobGovernor.cs" />
+    <Compile Include="Resources\TaskReady.cs" />
     <Compile Include="Resources\UserMemory.cs" />
     <Compile Include="Resources\Resource.cs" />
     <Compile Include="Resources\SupervisorMemory.cs" />

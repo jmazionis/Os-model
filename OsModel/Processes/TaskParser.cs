@@ -44,6 +44,7 @@ namespace OsModel.Processes
                     else
                     {
                         CreateResource(new Task(this, Resources.State.Free, "Task", taskSource, new List<string> { "Loader", "MainProc" } ));
+                        State = Processes.State.Blocked;
                         break;
                     }
             }

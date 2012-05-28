@@ -141,7 +141,7 @@ namespace OsModel.GUI
             DialogResult result = dialog.ShowDialog();
             if (result == DialogResult.OK)
             {
-                if (this.virtualMachineTabControl.Controls.Count < 3)
+                //if (this.virtualMachineTabControl.Controls.Count < 3)
                     ;//TODO: Add VM to OS
             }
         }
