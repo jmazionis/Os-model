@@ -61,9 +61,7 @@
             this.resIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resParentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resStateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.ioTab = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.outputTextBox = new System.Windows.Forms.TextBox();
             this.controlsGroupBox = new System.Windows.Forms.GroupBox();
@@ -71,6 +69,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.executeCountBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.coreBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.coreBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl.SuspendLayout();
@@ -82,7 +81,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.processGridView)).BeginInit();
             this.resourceTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resourcesGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.ioTab.SuspendLayout();
             this.controlsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coreBindingSource)).BeginInit();
@@ -358,7 +356,7 @@
             this.processGridView.Location = new System.Drawing.Point(-4, 0);
             this.processGridView.Name = "processGridView";
             this.processGridView.ReadOnly = true;
-            this.processGridView.Size = new System.Drawing.Size(721, 540);
+            this.processGridView.Size = new System.Drawing.Size(718, 540);
             this.processGridView.TabIndex = 0;
             // 
             // idColumn
@@ -395,7 +393,6 @@
             // 
             this.resourceTab.BackColor = System.Drawing.SystemColors.Control;
             this.resourceTab.Controls.Add(this.resourcesGridView);
-            this.resourceTab.Controls.Add(this.dataGridView2);
             this.resourceTab.Location = new System.Drawing.Point(4, 22);
             this.resourceTab.Name = "resourceTab";
             this.resourceTab.Size = new System.Drawing.Size(717, 540);
@@ -419,7 +416,7 @@
             this.resourcesGridView.Location = new System.Drawing.Point(-4, 0);
             this.resourcesGridView.Name = "resourcesGridView";
             this.resourcesGridView.ReadOnly = true;
-            this.resourcesGridView.Size = new System.Drawing.Size(721, 542);
+            this.resourcesGridView.Size = new System.Drawing.Size(718, 542);
             this.resourcesGridView.TabIndex = 1;
             // 
             // resIdColumn
@@ -440,14 +437,6 @@
             this.resStateColumn.Name = "resStateColumn";
             this.resStateColumn.ReadOnly = true;
             // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(805, 474);
-            this.dataGridView2.TabIndex = 0;
-            // 
             // ioTab
             // 
             this.ioTab.BackColor = System.Drawing.SystemColors.Control;
@@ -460,17 +449,6 @@
             this.ioTab.TabIndex = 4;
             this.ioTab.Text = "Input/Output";
             // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(745, 508);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(118, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Submit";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // textBox3
             // 
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -478,7 +456,7 @@
             this.textBox3.Enabled = false;
             this.textBox3.Location = new System.Drawing.Point(3, 510);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(711, 20);
+            this.textBox3.Size = new System.Drawing.Size(587, 20);
             this.textBox3.TabIndex = 1;
             // 
             // outputTextBox
@@ -554,6 +532,17 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.StartOSClick);
             // 
+            // button3
+            // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(596, 507);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(118, 23);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "Submit";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // coreBindingSource
             // 
             this.coreBindingSource.DataSource = typeof(OsModel.Core);
@@ -581,7 +570,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.processGridView)).EndInit();
             this.resourceTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.resourcesGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ioTab.ResumeLayout(false);
             this.ioTab.PerformLayout();
             this.controlsGroupBox.ResumeLayout(false);
@@ -620,10 +608,8 @@
         private System.Windows.Forms.DataGridView processGridView;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox executeCountBox;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox outputTextBox;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn parentColumn;
@@ -638,6 +624,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button3;
 
     }
 }

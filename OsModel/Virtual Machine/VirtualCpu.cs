@@ -26,7 +26,7 @@ namespace OsModel.VirtualMachineEmulator
             this.SF = 0;
         }
 
-        
+
 
         public bool ExecuteNext()
         {
@@ -48,7 +48,12 @@ namespace OsModel.VirtualMachineEmulator
                 }
                 return true;
             }
-            return false;
+            else
+            {
+                vm.FinishedWork = true;
+                return false;
+            
+            }
         }
 
         private void FindNextCommand()
@@ -75,7 +80,6 @@ namespace OsModel.VirtualMachineEmulator
             {
                 operand = word.Value.Substring(2, word.Value.Length - 2);
             }
-           
             switch (command)
             {
                 case "AD":
@@ -208,7 +212,7 @@ namespace OsModel.VirtualMachineEmulator
                     }
                 case "$E":
                     {
-                        Cpu.TIME--;
+                        vm.FinishedWork = true;
                         break;
                     }
                 default:

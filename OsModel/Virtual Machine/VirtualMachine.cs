@@ -16,6 +16,7 @@ namespace OsModel.VirtualMachineEmulator
         private Memory memory;
         private TaskLoader task;
         public static int BlockOffset = 0;
+        public bool FinishedWork = false;
         //private object[] registerState = new object[4];
 
         public VirtualMachine(string fileName)
@@ -41,7 +42,7 @@ namespace OsModel.VirtualMachineEmulator
             OsModel.Cpu.CX = this.cpu.CX;
             OsModel.Cpu.PC = this.cpu.PC;
             OsModel.Cpu.SF = this.cpu.SF;
-            while (OsModel.Cpu.TIME > 0)
+            while (OsModel.Cpu.TIME > 0 && !FinishedWork)
                 this.ExecuteNext();
             this.cpu.AX = OsModel.Cpu.AX;
             this.cpu.CX = OsModel.Cpu.CX;

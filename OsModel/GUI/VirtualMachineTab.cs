@@ -76,6 +76,16 @@ namespace OsModel.GUI
             outputBox.Text += VM.Io.Buffer;
             outputBox.Text += "\r\n";
         }
+
+        private void executeAsProcButton_Click(object sender, EventArgs e)
+        {
+            this.VM.ExecuteAsProcess();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.VM.ExecuteNext();
+        }
         
         
     }
