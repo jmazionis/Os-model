@@ -34,6 +34,7 @@
         {
             set { words[block, word] = value; }
             get { return words[block, word]; }
+
         }
 
         public void Write(string operand, string buffer)

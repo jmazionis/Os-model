@@ -96,7 +96,6 @@ namespace OsModel.VirtualMachineEmulator
 
         public static Int16 HexToInt(string number)
         {
-            //int numb = Convert.ToInt16(number, 16);
             return Convert.ToInt16(number, 16);
         }
 

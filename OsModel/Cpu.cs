@@ -6,20 +6,28 @@ using OsModel.VirtualMachineEmulator;
 
 namespace OsModel
 {
-    public class Cpu
+    public static class Cpu
     {
-        public Registers Registers { get; set; }
+        public const int PTR = 15;
+        public static short PC { get; set; }
+        public static Word AX { get; set; }
+        public static Word CX { get; set; }
+        public static byte SF { get; set; }
+        public static WorkMode MODE { get; set; }
+        public static int TIME { get; set; }
+        static Cpu()
+        {
+            TIME = PC = SF = 0;
+            AX = new Word(0); 
+            CX = new Word(0);
+            MODE = WorkMode.SUPERVISOR;
+
+        }
     }
 
     public struct Registers
     {
-        public short PC { get; set; }
-        public Word AX { get; set; }
-        public Word CX { get; set; }
-        public Word PTR { get; set; }
-        public byte SF { get; set; }
-        public WorkMode MODE { get; set; }
-        public Int64 TIME { get; set; }
+        
     }
 
     public enum WorkMode 
