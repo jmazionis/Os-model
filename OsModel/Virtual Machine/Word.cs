@@ -2,7 +2,7 @@
 
 namespace OsModel.VirtualMachineEmulator
 {
-    public class Word{
+    public class Word : ICloneable{
     
         public string Value { get; set; }
         public bool IsOccupied { get; set; }
@@ -20,6 +20,11 @@ namespace OsModel.VirtualMachineEmulator
         public Word(int value)
             : this(value.ToString())
         {
+        }
+
+        public Object Clone()
+        {
+            return new Word(this.Value);
         }
 
         public static Word operator +(Word word1, Word word2)

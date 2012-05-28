@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using System.Text;
+using OsModel;
 
 
 namespace OsModel.VirtualMachineEmulator
@@ -15,6 +16,7 @@ namespace OsModel.VirtualMachineEmulator
         private Memory memory;
         private TaskLoader task;
         public static int BlockOffset = 0;
+        //private object[] registerState = new object[4];
 
         public VirtualMachine(string fileName)
         {
@@ -26,6 +28,31 @@ namespace OsModel.VirtualMachineEmulator
             BlockOffset += Memory.VIRTUAL_MEMORY_BLOCK_COUNT;
             this.MapBlocks();
             VMTaskFinished += ReduceOffset;
+        }
+
+        public void ExecuteAsProcess()
+        {
+            /*registerState[0] = OsModel.Cpu.PC;
+            registerState[1] = OsModel.Cpu.AX.Clone();
+            registerState[2] = OsModel.Cpu.CX.Clone();
+            registerState[3] = OsModel.Cpu.SF;*/
+            OsModel.Cpu.TIME = OsModel.Cpu.TIMER_TACTS;
+            OsModel.Cpu.AX = this.cpu.AX;
+            OsModel.Cpu.CX = this.cpu.CX;
+            OsModel.Cpu.PC = this.cpu.PC;
+            OsModel.Cpu.SF = this.cpu.SF;
+            while (OsModel.Cpu.TIME > 0)
+                this.ExecuteNext();
+            this.cpu.AX = OsModel.Cpu.AX;
+            this.cpu.CX = OsModel.Cpu.CX;
+            this.cpu.PC = OsModel.Cpu.PC;
+            this.cpu.SF = OsModel.Cpu.SF;
+            OsModel.Cpu.TIME = 0;
+            /*OsModel.Cpu.PC = (short)registerState[0];
+            OsModel.Cpu.AX = (Word)(registerState[1] as Word).Clone();
+            OsModel.Cpu.CX = (Word)(registerState[2] as Word).Clone();
+            OsModel.Cpu.SF = (byte)registerState[3];*/
+
         }
 
         public void MapBlocks()

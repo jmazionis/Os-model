@@ -17,6 +17,7 @@ namespace OsModel.VirtualMachineEmulator
 
         public VirtualCpu(Memory memory, VirtualMachine vm)
         {
+            
             this.vm = vm;
             this.memory = memory;
             this.PC = 0;
@@ -25,11 +26,12 @@ namespace OsModel.VirtualMachineEmulator
             this.SF = 0;
         }
 
+        
 
         public bool ExecuteNext()
         {
-            int block = this.PC / 16;
-            int word = this.PC % 16;
+            int block = Cpu.PC / 16;
+            int word = Cpu.PC % 16;
             if (!(this.memory[block, word].Value == "$END"))
             {
                 if (this.memory[block, word].Value == "----")
@@ -39,7 +41,7 @@ namespace OsModel.VirtualMachineEmulator
                 }
                 this.ExecuteCommand(this.memory[block, word]);
                 if (!(this.memory[block, word].Value[0] == 'J'))
-                    this.PC++;
+                    Cpu.PC++;
                 if (CommandExecuted != null)
                 {
                     CommandExecuted();
@@ -53,8 +55,8 @@ namespace OsModel.VirtualMachineEmulator
         {
             while (true)
             {
-                PC++;
-                if (this.memory[PC / 16, PC % 16].Value != "----")
+                Cpu.PC++;
+                if (this.memory[Cpu.PC / 16, Cpu.PC % 16].Value != "----")
                     return;
             }
         }
@@ -62,7 +64,7 @@ namespace OsModel.VirtualMachineEmulator
 
         public string NextCommand()
         {
-            return this.memory[PC / 16, PC % 16].Value;
+            return this.memory[Cpu.PC / 16, Cpu.PC % 16].Value;
         }
 
         public void ExecuteCommand(Word word)
@@ -78,93 +80,108 @@ namespace OsModel.VirtualMachineEmulator
             {
                 case "AD":
                     {
-                        this.AX = this.AX + this.CX;
+                        Cpu.TIME--;
+                        Cpu.AX = Cpu.AX + Cpu.CX;
                         break;
                     }
                 case "SU":
                     {
-                        this.AX = this.AX - this.CX;
+                        Cpu.TIME--;
+                        Cpu.AX = Cpu.AX - Cpu.CX;
                         break;
                     }
                 case "CM":
                     {
-                        if (this.AX > this.CX)
-                            this.SF = 0;
-                        if (this.AX < this.CX)
-                            this.SF = 2;
-                        if (Word.HexToInt(this.AX.Value) == Word.HexToInt(this.CX.Value))
-                            this.SF = 1;
+                        Cpu.TIME--;
+                        if (Cpu.AX > Cpu.CX)
+                            Cpu.SF = 0;
+                        if (Cpu.AX < Cpu.CX)
+                            Cpu.SF = 2;
+                        if (Word.HexToInt(Cpu.AX.Value) == Word.HexToInt(Cpu.CX.Value))
+                            Cpu.SF = 1;
                         break;
                     }
                 case "SA":
                     {
-                        this.memory[Convert.ToInt32(operand[0].ToString(), 16), Convert.ToInt32(operand[1].ToString(), 16)].Value = this.AX.Value;
+                        Cpu.TIME--;
+                        this.memory[Convert.ToInt32(operand[0].ToString(), 16), Convert.ToInt32(operand[1].ToString(), 16)].Value = Cpu.AX.Value;
                         break;
                     }
                 case "LA":
                     {
-                        this.AX.Value = this.memory[Convert.ToInt32(operand[0].ToString(), 16), Convert.ToInt32(operand[1].ToString(), 16)].Value;
+                        Cpu.TIME--;
+                        Cpu.AX.Value = this.memory[Convert.ToInt32(operand[0].ToString(), 16), Convert.ToInt32(operand[1].ToString(), 16)].Value;
                         break;
                     }
                 case "SC":
                     {
-                        this.memory[Convert.ToInt32(operand[0].ToString(), 16), Convert.ToInt32(operand[1].ToString(), 16)].Value = this.CX.Value;
+                        Cpu.TIME--;
+                        this.memory[Convert.ToInt32(operand[0].ToString(), 16), Convert.ToInt32(operand[1].ToString(), 16)].Value = Cpu.CX.Value;
                         break;
                     }
                 case "LC":
                     {
-                        this.CX.Value = this.memory[Convert.ToInt32(operand[0].ToString(), 16), Convert.ToInt32(operand[1].ToString(), 16)].Value;
+                        Cpu.TIME--;
+                        Cpu.CX.Value = this.memory[Convert.ToInt32(operand[0].ToString(), 16), Convert.ToInt32(operand[1].ToString(), 16)].Value;
                         break;
                     }
                 case "JM":
                     {
-                        this.PC = Convert.ToInt16(operand, 16);
+                        Cpu.TIME--;
+                        Cpu.PC = Convert.ToInt16(operand, 16);
                         break;
                     }
                 case "JE":
                     {
-                        if (this.SF == 1)
-                            this.PC = Convert.ToInt16(operand, 16);
-                        else this.PC++;
+                        Cpu.TIME--;
+                        if (Cpu.SF == 1)
+                            Cpu.PC = Convert.ToInt16(operand, 16);
+                        else Cpu.PC++;
                         break;
                     }
                 case "JN":
                     {
-                        if (this.SF != 1)
-                            this.PC = Convert.ToInt16(operand, 16);
-                        else this.PC++;
+                        Cpu.TIME--;
+                        if (Cpu.SF != 1)
+                            Cpu.PC = Convert.ToInt16(operand, 16);
+                        else Cpu.PC++;
                         break;
                     }
                 case "JA":
                     {
-                        if (this.SF == 0)
-                            this.PC = Convert.ToInt16(operand, 16);
-                        else this.PC++;
+                        Cpu.TIME--;
+                        if (Cpu.SF == 0)
+                            Cpu.PC = Convert.ToInt16(operand, 16);
+                        else Cpu.PC++;
                         break;
                     }
                 case "JB":
                     {
-                        if (this.SF == 2)
-                            this.PC = Convert.ToInt16(operand, 16);
-                        else this.PC++;
+                        Cpu.TIME--;
+                        if (Cpu.SF == 2)
+                            Cpu.PC = Convert.ToInt16(operand, 16);
+                        else Cpu.PC++;
                         break;
                     }
                 case "JG":
                     {
-                        if (this.SF == 0 || this.SF == 1)
-                            this.PC = Convert.ToInt16(operand, 16);
-                        else this.PC++;
+                        Cpu.TIME--;
+                        if (Cpu.SF == 0 || Cpu.SF == 1)
+                            Cpu.PC = Convert.ToInt16(operand, 16);
+                        else Cpu.PC++;
                         break;
                     }
                 case "JL":
                     {
-                        if (this.SF == 1 || this.SF == 2)
-                            this.PC = Convert.ToInt16(operand, 16);
-                        else this.PC++;
+                        Cpu.TIME--;
+                        if (Cpu.SF == 1 || Cpu.SF == 2)
+                            Cpu.PC = Convert.ToInt16(operand, 16);
+                        else Cpu.PC++;
                         break;
                     }
                 case "GD": //TO DO: everything
                     {
+                        Cpu.TIME--;
                         //memory.Write(operand);
                         memory.Write(operand, vm.Io.Buffer);
                         vm.Io.Flush();
@@ -172,6 +189,7 @@ namespace OsModel.VirtualMachineEmulator
                     }
                 case "PD":
                     {
+                        Cpu.TIME--;
                         string buf = string.Empty;
                         int block = Word.HexToInt(operand[0].ToString());
                         for (int i = 0; i < memory.WordCount; i++)
@@ -190,7 +208,7 @@ namespace OsModel.VirtualMachineEmulator
                     }
                 case "$E":
                     {
-
+                        Cpu.TIME--;
                         break;
                     }
                 default:
