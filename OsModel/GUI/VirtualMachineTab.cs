@@ -19,6 +19,7 @@ namespace OsModel.GUI
             FillMemoryGridView();
             VM.VMTaskFinished += new VirtualMachineEmulator.VMEventHandler(UpdateVmMemoryGridViewGrid);
             VM.VMTaskFinished += new VirtualMachineEmulator.VMEventHandler(UpdateNextCommand);
+            UpdateNextCommand();
         }
 
         private void FillMemoryGridView()

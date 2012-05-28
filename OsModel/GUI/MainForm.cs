@@ -18,15 +18,6 @@ namespace OsModel.GUI
         public MainForm()
         {
             InitializeComponent();
-            Planner.ProcessExecuted += new OSEventHandler(UpdateProcesses);
-            Planner.ProcessExecuted += new OSEventHandler(UpdateResources);
-            Planner.ProcessExecuted += new OSEventHandler(UpdateRealMemoryGrid);
-            AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"Tasks\Fibonacci.txt"));
-            AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"Tasks\Loop5.txt"));
-            AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"Tasks\Loop3.txt"));
-
-            FillRealMemoryGrid();
-           
         }
 
         void UpdateProcesses()
@@ -110,6 +101,15 @@ namespace OsModel.GUI
         private void StartOSClick(object sender, EventArgs e)
         {
             Core.StartOS();
+            Planner.ProcessExecuted += new OSEventHandler(UpdateProcesses);
+            Planner.ProcessExecuted += new OSEventHandler(UpdateResources);
+            Planner.ProcessExecuted += new OSEventHandler(UpdateRealMemoryGrid);
+            AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"Tasks\Fibonacci.txt"));
+            AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"Tasks\Loop5.txt"));
+            AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"Tasks\Loop3.txt"));
+            FillRealMemoryGrid();
+            tabControl.Visible = true;
+            tabControl.Enabled = true;
         }
 
         private void button2_Click(object sender, EventArgs e)

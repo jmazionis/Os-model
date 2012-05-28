@@ -99,12 +99,14 @@
             this.tabControl.Controls.Add(this.processTab);
             this.tabControl.Controls.Add(this.resourceTab);
             this.tabControl.Controls.Add(this.ioTab);
+            this.tabControl.Enabled = false;
             this.tabControl.Location = new System.Drawing.Point(12, 12);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.ShowToolTips = true;
             this.tabControl.Size = new System.Drawing.Size(670, 506);
             this.tabControl.TabIndex = 0;
+            this.tabControl.Visible = false;
             // 
             // realMachineTab
             // 
@@ -297,7 +299,7 @@
             this.realMemoryGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.realMemoryGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.realMemoryGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.realMemoryGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.realMemoryGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.realMemoryGridView.Location = new System.Drawing.Point(3, 3);
