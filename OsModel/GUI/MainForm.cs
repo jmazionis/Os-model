@@ -108,7 +108,7 @@ namespace OsModel.GUI
 
         private void AddVirtualMachine(VirtualMachineEmulator.VirtualMachine vm)
         {
-            vm.VMTaskFinished += new VirtualMachineEmulator.VMEventHandler(UpdateRegisters);
+            vm.Cpu.CommandExecuted += new VirtualMachineEmulator.VMEventHandler(UpdateRegisters);
             virtualMachineTabControl.Controls.Add(new VirtualMachineTab(vm, virtualMachineTabControl.Controls.Count, this.outputTextBox));
         }
 

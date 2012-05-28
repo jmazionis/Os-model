@@ -17,7 +17,6 @@ namespace OsModel.Processes
         public string Id { get; set; }   
         public State State { get; set; }
         public int Priority { get; set; }
-        public Registers Registers { get; set; }
         public List<Resource> CreatedResources { get; set; }
         public List<Process> CreatedProcesses { get; set; }
         public Process ParentProcess { get; set; }
