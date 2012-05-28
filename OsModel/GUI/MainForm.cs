@@ -95,12 +95,13 @@ namespace OsModel.GUI
 
         private void UpdateRegisters()
         {
-            axLabel.Text = Cpu.Registers.AX.Value;
-            cxLabel.Text = Cpu.Registers.CX.Value;
-            pcLabel.Text = Cpu.Registers.PC.ToString("X");
+            axLabel.Text = Cpu.AX.Value;
+            cxLabel.Text = Cpu.CX.Value;
+            pcLabel.Text = Cpu.PC.ToString("X");
             ptrLabel.Text = Cpu.PTR.ToString("X");
-            modeLabel.Text = Cpu.Registers.MODE.ToString();
-            sfLabel.Text = Cpu.Registers.SF.ToString("X");
+            modeLabel.Text = Cpu.MODE.ToString();
+            sfLabel.Text = Cpu.SF.ToString("X");
+            timeLabel.Text = Cpu.TIME.ToString();
 
 
         }
