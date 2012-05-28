@@ -133,12 +133,18 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Tasks\Loop3.txt" />
-    <Content Include="Tasks\Loop5.txt" />
+    <Content Include="Tasks\Loop3.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Tasks\Loop5.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Tasks\Fibonacci.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Tasks\Loop10.txt" />
+    <Content Include="Tasks\Loop10.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">

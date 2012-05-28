@@ -58,19 +58,19 @@
             this.checkpointColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resourceTab = new System.Windows.Forms.TabPage();
             this.resourcesGridView = new System.Windows.Forms.DataGridView();
+            this.resIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resParentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resStateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.ioTab = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.controlsGroupBox = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.executeCountBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.resIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resParentColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resStateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button4 = new System.Windows.Forms.Button();
             this.coreBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.coreBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl.SuspendLayout();
@@ -290,15 +290,19 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "AX";
             // 
-            // realMemory
+            // realMemoryGridView
             // 
+            this.realMemoryGridView.AllowUserToAddRows = false;
+            this.realMemoryGridView.AllowUserToDeleteRows = false;
             this.realMemoryGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.realMemoryGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.realMemoryGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.realMemoryGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.realMemoryGridView.Enabled = false;
             this.realMemoryGridView.Location = new System.Drawing.Point(3, 3);
-            this.realMemoryGridView.Name = "realMemory";
+            this.realMemoryGridView.Name = "realMemoryGridView";
+            this.realMemoryGridView.ReadOnly = true;
             this.realMemoryGridView.Size = new System.Drawing.Size(656, 413);
             this.realMemoryGridView.TabIndex = 0;
             // 
@@ -416,6 +420,24 @@
             this.resourcesGridView.Size = new System.Drawing.Size(666, 482);
             this.resourcesGridView.TabIndex = 1;
             // 
+            // resIdColumn
+            // 
+            this.resIdColumn.HeaderText = "ID";
+            this.resIdColumn.Name = "resIdColumn";
+            this.resIdColumn.ReadOnly = true;
+            // 
+            // resParentColumn
+            // 
+            this.resParentColumn.HeaderText = "Creator";
+            this.resParentColumn.Name = "resParentColumn";
+            this.resParentColumn.ReadOnly = true;
+            // 
+            // resStateColumn
+            // 
+            this.resStateColumn.HeaderText = "State";
+            this.resStateColumn.Name = "resStateColumn";
+            this.resStateColumn.ReadOnly = true;
+            // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -486,6 +508,15 @@
             this.controlsGroupBox.TabStop = false;
             this.controlsGroupBox.Text = "Controls";
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(6, 114);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "New Task";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -519,33 +550,6 @@
             this.button1.Text = "Start OS";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.StartOSClick);
-            // 
-            // resIdColumn
-            // 
-            this.resIdColumn.HeaderText = "ID";
-            this.resIdColumn.Name = "resIdColumn";
-            this.resIdColumn.ReadOnly = true;
-            // 
-            // resParentColumn
-            // 
-            this.resParentColumn.HeaderText = "Creator";
-            this.resParentColumn.Name = "resParentColumn";
-            this.resParentColumn.ReadOnly = true;
-            // 
-            // resStateColumn
-            // 
-            this.resStateColumn.HeaderText = "State";
-            this.resStateColumn.Name = "resStateColumn";
-            this.resStateColumn.ReadOnly = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(6, 114);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "New Task";
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // coreBindingSource
             // 

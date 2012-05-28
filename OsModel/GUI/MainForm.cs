@@ -20,7 +20,13 @@ namespace OsModel.GUI
             InitializeComponent();
             Planner.ProcessExecuted += new OSEventHandler(UpdateProcesses);
             Planner.ProcessExecuted += new OSEventHandler(UpdateResources);
-            AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"C:\Users\Tomas\Os-model\OsModel\Tasks\Fibonacci.txt"));
+            Planner.ProcessExecuted += new OSEventHandler(UpdateRealMemoryGrid);
+            AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"Tasks\Fibonacci.txt"));
+            AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"Tasks\Loop5.txt"));
+            AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"Tasks\Loop3.txt"));
+
+            FillRealMemoryGrid();
+           
         }
 
         void UpdateProcesses()
