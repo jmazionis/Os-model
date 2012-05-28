@@ -31,6 +31,18 @@ namespace OsModel.VirtualMachineEmulator
             VMTaskFinished += ReduceOffset;
         }
 
+        public VirtualMachine(string fileName, Memory memory)
+        {
+            this.memory = memory;
+            this.task = new TaskLoader(fileName, this.memory);
+            task.Load();
+            cpu = new VirtualCpu(this.memory, this);
+            io = new IO();
+            BlockOffset += Memory.VIRTUAL_MEMORY_BLOCK_COUNT;
+            this.MapBlocks();
+            VMTaskFinished += ReduceOffset;
+        }
+
         public void ExecuteAsProcess()
         {
             /*registerState[0] = OsModel.Cpu.PC;

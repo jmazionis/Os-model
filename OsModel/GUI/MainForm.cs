@@ -119,9 +119,9 @@ namespace OsModel.GUI
             Planner.ProcessExecuted += new OSEventHandler(UpdateResources);
             Planner.ProcessExecuted += new OSEventHandler(UpdateRealMemoryGrid);
             Planner.ProcessExecuted += new OSEventHandler(UpdateRegisters);
-            AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"Tasks\Loop10.txt"));
+            /*AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"Tasks\Loop10.txt"));
             AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"Tasks\Loop5.txt"));
-            AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"Tasks\Loop3.txt"));
+            AddVirtualMachine(new VirtualMachineEmulator.VirtualMachine(@"Tasks\Loop3.txt"));*/
             FillRealMemoryGrid();
             UpdateRegisters();
             UpdateProcesses();
